@@ -1,10 +1,10 @@
 .pixel-grid {
-  .pixels {
+  .sprite {
     float: left;
     box-shadow: 0px 0px 15px 2px #666;
     margin: 20px;
 
-    .pixel-row {
+    .row {
       display: flex;
       flex-direction: row;
 

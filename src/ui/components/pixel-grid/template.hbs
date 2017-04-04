@@ -11,15 +11,11 @@
     <!--<button style="background-color: {{buttonColorStyle}};" onclick={{action changeButtonStyle}}>Click To Change</button>-->
   <!--</div>-->
 
-  <div class="pixels">
-    {{#each pixels.pixels key="@index" as |row|}}
-      <div class="pixel-row">
+  <div class="sprite">
+    {{#each sprite.pixels key="@index" as |row|}}
+      <div class="row">
         {{#each row key="@index" as |pixel|}}
-          <div
-            style="background-color: {{pixel.color}}"
-            class="pixel"
-            onclick={{action clickPixel pixel}}
-          ></div>
+          <pixel-component @x={{pixel.x}} @y={{pixel.y}} @color={{pixel.color}} />
         {{/each}}
       </div>
     {{/each}}

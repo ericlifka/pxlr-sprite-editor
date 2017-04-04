@@ -5,27 +5,29 @@ export default class PixelGrid extends Component {
   @tracked buttonColorClass = "blue";
   @tracked buttonColorStyle = "blue";
 
-  @tracked pixels = this.updatePixels();
+  @tracked sprite = this.updateSprite();
 
-  updatePixels() {
-    let width = this.args.width || 8;
-    let height = this.args.height || 8;
-    let pixels = [];
+  updateSprite() {
+    let sprite = {
+      width: this.args.width || 8,
+      height: this.args.height || 8,
+      pixels: []
+    };
 
-    for (let y = 0; y < height; y++) {
+    for (let y = 0; y < sprite.height; y++) {
       let row = [];
 
-      for (let x = 0; x < width; x++) {
+      for (let x = 0; x < sprite.width; x++) {
         let pixel = {
           x, y, color: "#ffffff"
         };
         row.push(pixel);
       }
 
-      pixels.push(row);
+      sprite.pixels.push(row);
     }
 
-    return { pixels };
+    return sprite;
   }
 
   clickPixel(pixel) {
@@ -35,8 +37,7 @@ export default class PixelGrid extends Component {
   }
 
   didUpdate() {
-    this.buttons = this.updateButtons();
-    this.pixels = this.updatePixels();
+    this.sprite = this.updateSprite();
   }
 
   updateButtons() {
