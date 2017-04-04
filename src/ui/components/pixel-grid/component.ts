@@ -8,10 +8,20 @@ export default class PixelGrid extends Component {
   }
 
   updateButtons() {
+    let width = this.args.width;
+    let height = this.args.height;
     let buttons = [];
-    for (let i = 0; i < this.args.width; i++) {
-      buttons.push(i);
+
+    for (let h = 0; h < height; h++) {
+      let row = [];
+
+      for (let w = 0; w < width; w++) {
+        row.push(h + "," + w);
+      }
+
+      buttons.push(row);
     }
+
     return buttons;
   }
 };
