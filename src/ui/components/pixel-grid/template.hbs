@@ -1,27 +1,13 @@
 <div class="pixel-grid">
-
-  <!--<div>-->
-    <!--<button onclick={{action internalAction "param1"}}>Click Me!</button>-->
-  <!--</div>-->
-  <!--<div>-->
-    <!--<button class={{buttonColorClass}} onclick={{action changeButtonColor}}>Click To Change</button>-->
-  <!--</div>-->
-
-  <!--<div>-->
-    <!--<button style="background-color: {{buttonColorStyle}};" onclick={{action changeButtonStyle}}>Click To Change</button>-->
-  <!--</div>-->
-
-  <div class="sprite">
-    {{#each sprite.pixels key="@index" as |row|}}
-      <div class="row">
-        {{#each row key="@index" as |pixel|}}
-          <pixel-component
-            @clickPixel={{action clickPixel}}
-            @x={{pixel.x}}
-            @y={{pixel.y}}
-            @color={{pixel.color}} />
-        {{/each}}
-      </div>
-    {{/each}}
-  </div>
+  {{#each sprite.pixels key="@index" as |row|}}
+    <div class="row">
+      {{#each row key="@index" as |pixel|}}
+        <pixel-component
+          @clickPixel={{action clickPixel}}
+          @x={{pixel.x}}
+          @y={{pixel.y}}
+          @color={{pixel.color}} />
+      {{/each}}
+    </div>
+  {{/each}}
 </div>

@@ -13,12 +13,4 @@ export default class PxlrSpriteEditor extends Component {
     let val = event.target.value;
     this.height = parseInt(val, 10);
   }
-
-  testAction(arg1, arg2) {
-    console.log('external!', arg1, arg2);
-  }
-
-  inputChange(event) {
-    console.log('inputChange', event.target.value);
-  }
 }
