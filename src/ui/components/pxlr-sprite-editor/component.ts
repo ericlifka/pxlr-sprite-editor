@@ -4,14 +4,14 @@ export default class PxlrSpriteEditor extends Component {
   @tracked width = 8;
   @tracked height = 4;
 
-  set4() {
-    this.width = 4;
-    this.height = 4;
+  widthChange(event) {
+    let val = event.target.value;
+    this.width = parseInt(val, 10);
   }
 
-  set8() {
-    this.width = 8;
-    this.height = 8;
+  heightChange(event) {
+    let val = event.target.value;
+    this.height = parseInt(val, 10);
   }
 
   testAction(arg1, arg2) {
