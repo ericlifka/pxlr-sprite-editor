@@ -13,4 +13,8 @@ export default class PxlrSpriteEditor extends Component {
     this.width = 8;
     this.height = 8;
   }
+
+  testAction(arg1, arg2) {
+    console.log('external!', arg1, arg2);
+  }
 }

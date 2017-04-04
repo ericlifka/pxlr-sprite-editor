@@ -24,4 +24,9 @@ export default class PixelGrid extends Component {
 
     return buttons;
   }
+
+  internalAction(arg) {
+    console.log('internal', arg);
+    this.args.externalAction(arg, 'param2');
+  }
 };
