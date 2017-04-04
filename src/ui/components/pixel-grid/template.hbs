@@ -15,7 +15,11 @@
     {{#each sprite.pixels key="@index" as |row|}}
       <div class="row">
         {{#each row key="@index" as |pixel|}}
-          <pixel-component @x={{pixel.x}} @y={{pixel.y}} @color={{pixel.color}} />
+          <pixel-component
+            @clickPixel={{action clickPixel}}
+            @x={{pixel.x}}
+            @y={{pixel.y}}
+            @color={{pixel.color}} />
         {{/each}}
       </div>
     {{/each}}

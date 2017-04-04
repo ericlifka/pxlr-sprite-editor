@@ -30,10 +30,8 @@ export default class PixelGrid extends Component {
     return sprite;
   }
 
-  clickPixel(pixel) {
-    console.log('clicked:', pixel.x, pixel.y);
-    this.pixels.pixels[pixel.y][pixel.x].color = "blue";
-    this.pixels = { pixels: this.pixels.pixels };
+  clickPixel(x, y) {
+    this.sprite.pixels[y][x].color = "blue";
   }
 
   didUpdate() {
