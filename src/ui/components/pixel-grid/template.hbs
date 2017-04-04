@@ -3,6 +3,8 @@
   <div>height: {{@dimensions.height}}</div>
 
   <div>
-    
+    {{#each buttons key="@index" as |buttonName|}}
+      <button>{{buttonName}}</button>
+    {{/each}}
   </div>
 </div>
