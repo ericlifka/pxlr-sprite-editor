@@ -3,7 +3,7 @@ import Component, { tracked } from '@glimmer/component';
 export default class PixelGrid extends Component {
   @tracked buttons = this.updateButtons();
   @tracked buttonColorClass = "blue";
-  @tracked buttonColorStyle = "background-color: blue";
+  @tracked buttonColorStyle = "blue";
 
   didUpdate() {
     this.buttons = this.updateButtons();
@@ -37,6 +37,6 @@ export default class PixelGrid extends Component {
   }
 
   changeButtonStyle() {
-    this.buttonColorStyle = this.buttonColorStyle === "background-color: blue" ? "background-color: green" : "background-color: blue";
+    this.buttonColorStyle = this.buttonColorStyle === "blue" ? "green" : "blue";
   }
 };
