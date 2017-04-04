@@ -1,3 +1,16 @@
-h1 {
-  color: #444;
+.pixel-grid {
+  .pixels {
+
+
+    .pixel-row {
+      display: flex;
+      flex-direction: row;
+
+      .pixel {
+        border: 1px solid black;
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
 }

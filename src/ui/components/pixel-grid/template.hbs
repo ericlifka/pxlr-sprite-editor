@@ -17,4 +17,14 @@
   <div>
     <button style="background-color: {{buttonColorStyle}};" onclick={{action changeButtonStyle}}>Click To Change</button>
   </div>
+
+  <div class="pixels">
+    {{#each pixels key="@index" as |row|}}
+      <div class="pixel-row">
+        {{#each row key="@index" as |pixel|}}
+          <div style="background-color: {{pixel.color}}" class="pixel"></div>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
 </div>
