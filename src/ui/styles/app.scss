@@ -1,15 +1,22 @@
 .pixel-grid {
   .pixels {
-
+    float: left;
+    box-shadow: 0px 0px 15px 2px #666;
+    margin: 20px;
 
     .pixel-row {
       display: flex;
       flex-direction: row;
 
       .pixel {
-        border: 1px solid black;
-        width: 10px;
-        height: 10px;
+        width: 15px;
+        height: 15px;
+      }
+
+      .pixel:hover {
+        border: 1px solid #666;
+        width: 13px;
+        height: 13px;
       }
     }
   }

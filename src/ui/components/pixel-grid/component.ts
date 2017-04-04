@@ -25,7 +25,13 @@ export default class PixelGrid extends Component {
       pixels.push(row);
     }
 
-    return pixels;
+    return { pixels };
+  }
+
+  clickPixel(pixel) {
+    console.log('clicked:', pixel.x, pixel.y);
+    this.pixels.pixels[pixel.y][pixel.x].color = "blue";
+    this.pixels = { pixels: this.pixels.pixels };
   }
 
   didUpdate() {

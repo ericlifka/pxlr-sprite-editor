@@ -1,28 +1,25 @@
 <div class="pixel-grid">
-  {{#each buttons key="@index" as |row|}}
-    <div>
-      {{#each row key="@index" as |buttonName|}}
-        <button>{{buttonName}}</button>
-      {{/each}}
-    </div>
-  {{/each}}
 
-  <div>
-    <button onclick={{action internalAction "param1"}}>Click Me!</button>
-  </div>
-  <div>
-    <button class={{buttonColorClass}} onclick={{action changeButtonColor}}>Click To Change</button>
-  </div>
+  <!--<div>-->
+    <!--<button onclick={{action internalAction "param1"}}>Click Me!</button>-->
+  <!--</div>-->
+  <!--<div>-->
+    <!--<button class={{buttonColorClass}} onclick={{action changeButtonColor}}>Click To Change</button>-->
+  <!--</div>-->
 
-  <div>
-    <button style="background-color: {{buttonColorStyle}};" onclick={{action changeButtonStyle}}>Click To Change</button>
-  </div>
+  <!--<div>-->
+    <!--<button style="background-color: {{buttonColorStyle}};" onclick={{action changeButtonStyle}}>Click To Change</button>-->
+  <!--</div>-->
 
   <div class="pixels">
-    {{#each pixels key="@index" as |row|}}
+    {{#each pixels.pixels key="@index" as |row|}}
       <div class="pixel-row">
         {{#each row key="@index" as |pixel|}}
-          <div style="background-color: {{pixel.color}}" class="pixel"></div>
+          <div
+            style="background-color: {{pixel.color}}"
+            class="pixel"
+            onclick={{action clickPixel pixel}}
+          ></div>
         {{/each}}
       </div>
     {{/each}}
