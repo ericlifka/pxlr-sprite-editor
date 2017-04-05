@@ -39,7 +39,7 @@ export default class PxlrSpriteEditor extends Component {
     for (let h = 0; h < this.height; h++) {
       let row = [];
       for (let w = 0; w < this.width; w++) {
-        row.push(new Pixel());
+        row.push(new Pixel(this.activeColor));
       }
       rows.push(row);
     }
