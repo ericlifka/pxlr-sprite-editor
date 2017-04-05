@@ -1,6 +1,17 @@
 <div class="pxlr-sprite-editor">
-  <div class="color-picker">
-    Color: <input class="jscolor" value="ab2567" onchange={{action colorChange}}>
+  <div class="controls">
+    <div class="dimensions">
+      <label>Width:</label>
+      <input defaultValue={{width}} oninput={{action updateDimensions "width"}} />
+
+      <label>Height:</label>
+      <input defaultValue={{height}} oninput={{action updateDimensions "height"}} />
+
+      <button onclick={{action updateSpriteDimensions}}>Update Sprite</button>
+    </div>
+    <div class="color-picker">
+      Color: <input class="jscolor" value="ab2567" onchange={{action colorChange}}>
+    </div>
   </div>
 
   <div>
