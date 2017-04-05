@@ -1,9 +1,6 @@
 <div class="pxlr-sprite-editor">
   <div class="color-picker">
-    <button onclick={{action changeColor "blue"}}>Blue!</button>
-    <button onclick={{action changeColor "green"}}>Green!</button>
-    <button onclick={{action changeColor "red"}}>Red!</button>
-    <div class="color-swatch" style="background-color: {{activeColor}}"></div>
+    Color: <input class="jscolor" value="ab2567" onchange={{action colorChange}}>
   </div>
 
   <div class="pixel-grid">

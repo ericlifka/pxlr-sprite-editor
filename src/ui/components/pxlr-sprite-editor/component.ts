@@ -13,8 +13,12 @@ export default class PxlrSpriteEditor extends Component {
   @tracked activeColor: string = "green";
   @tracked pixels: Pixel[][] = [ [ new Pixel() ] ];
 
-  changeColor(color) {
-    this.activeColor = color;
+  didInsertElement() {
+    this.activeColor = "#" + this.element.getElementsByClassName('jscolor')[0].value;
+  }
+
+  colorChange(event) {
+    this.activeColor = "#" + event.target.value;
   }
 
   clickPixel(pixel) {
