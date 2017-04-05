@@ -1,3 +1,13 @@
 <div class="pxlr-sprite-editor">
+  <button onclick={{action changeColor "blue"}}>Blue!</button>
+  <button onclick={{action changeColor "green"}}>Green!</button>
+  <button onclick={{action changeColor "red"}}>Red!</button>
 
+  {{#each pixels key="id" as |pixel|}}
+    <div style="background-color: {{pixel.color}}" onclick={{action clickPixel pixel}}>
+      {{pixel.color}}
+    </div>
+  {{/each}}
+
+  <button onclick={{action addPixel}}>New Pixel</button>
 </div>
