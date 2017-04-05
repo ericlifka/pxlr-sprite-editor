@@ -10,7 +10,12 @@
       margin-left: 10px;
     }
   }
+
   .pixel-grid {
+    display: inline-block;
+    box-shadow: 0px 0px 15px 2px #666;
+    margin: 10px 0;
+
     .row {
       display: flex;
       flex-direction: row;
@@ -19,6 +24,12 @@
         //border: 1px solid black;
         width: 20px;
         height: 20px;
+      }
+
+      .pixel:hover {
+        border: 1px solid #666;
+        width: 18px;
+        height: 18px;
       }
     }
   }

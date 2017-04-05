@@ -4,7 +4,7 @@ class Pixel {
   id: number = Date.now();
   @tracked color: string;
 
-  constructor(color="#00ff00") {
+  constructor(color="#ffffff") {
     this.color = color;
   }
 }
