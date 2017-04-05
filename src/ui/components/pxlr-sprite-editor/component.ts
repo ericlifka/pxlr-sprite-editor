@@ -34,9 +34,17 @@ export default class PxlrSpriteEditor extends Component {
     }
     this.pixels = [...this.pixels, row]
   }
+  removeRow() {
+    this.pixels.pop();
+    this.pixels = this.pixels;
+  }
 
   addColumn() {
     this.pixels = this.pixels.map(row => [...row, new Pixel()]);
+  }
+  removeColumn() {
+    this.pixels.forEach(row => row.pop());
+    this.pixels = this.pixels;
   }
 
   updateDimensions(dimension, event) {
@@ -47,9 +55,15 @@ export default class PxlrSpriteEditor extends Component {
     while (this.width > this.pixels[0].length) {
       this.addColumn();
     }
+    while (this.width < this.pixels[0].length) {
+      this.removeColumn();
+    }
 
     while (this.height > this.pixels.length) {
       this.addRow();
+    }
+    while (this.height < this.pixels.length) {
+      this.removeRow();
     }
   }
 }
