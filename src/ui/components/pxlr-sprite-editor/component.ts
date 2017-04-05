@@ -10,10 +10,11 @@ class Pixel {
 }
 
 export default class PxlrSpriteEditor extends Component {
+  @tracked spriteActive: boolean;
   @tracked width: number = 16;
   @tracked height: number = 16;
   @tracked activeColor: string = "green";
-  @tracked pixels: Pixel[][] = [[new Pixel()]];
+  @tracked pixels: Pixel[][];
 
   didInsertElement() {
     this.activeColor = "#" + this.element.getElementsByClassName('jscolor')[0].value;
@@ -51,19 +52,21 @@ export default class PxlrSpriteEditor extends Component {
     this[dimension] = parseInt(event.target.value, 10);
   }
 
-  updateSpriteDimensions() {
-    while (this.width > this.pixels[0].length) {
-      this.addColumn();
+  createSprite() {
+    let rows = [];
+    for (let h = 0; h < this.height; h++) {
+      let row = [];
+      for (let w = 0; w < this.width; w++) {
+        row.push(new Pixel());
+      }
+      rows.push(row);
     }
-    while (this.width < this.pixels[0].length) {
-      this.removeColumn();
-    }
+    this.pixels = rows;
+    this.spriteActive = true;
+  }
 
-    while (this.height > this.pixels.length) {
-      this.addRow();
-    }
-    while (this.height < this.pixels.length) {
-      this.removeRow();
-    }
+  cancelSprite() {
+    this.pixels = null;
+    this.spriteActive = false;
   }
 }
