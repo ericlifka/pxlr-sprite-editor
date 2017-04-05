@@ -3,11 +3,24 @@
   <button onclick={{action changeColor "green"}}>Green!</button>
   <button onclick={{action changeColor "red"}}>Red!</button>
 
-  {{#each pixels key="id" as |pixel|}}
-    <div style="background-color: {{pixel.color}}" onclick={{action clickPixel pixel}}>
-      {{pixel.color}}
-    </div>
-  {{/each}}
+  <div class="pixel-grid">
 
-  <button onclick={{action addPixel}}>New Pixel</button>
+    {{#each pixels key="@index" as |row|}}
+      <div class="row">
+
+        {{#each row key="id" as |pixel|}}
+          <div
+            class="pixel"
+            style="background-color: {{pixel.color}}"
+            onclick={{action clickPixel pixel}}
+          ></div>
+        {{/each}}
+
+      </div>
+    {{/each}}
+
+  </div>
+
+  <button onclick={{action addRow}}>Add Row</button>
+  <button onclick={{action addColumn}}>Add Column</button>
 </div>

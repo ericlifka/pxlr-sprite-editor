@@ -10,19 +10,28 @@ class Pixel {
 }
 
 export default class PxlrSpriteEditor extends Component {
-  @tracked pixels: Pixel[] = [ new Pixel() ];
+  @tracked pixels: Pixel[][] = [ [ new Pixel() ] ];
 
   changeColor(color) {
     // this.pixels[0].color = color;
-    this.pixels.forEach(pixel => pixel.color = color);
+    this.pixels.forEach(row => row.forEach(pixel => pixel.color = color));
   }
 
   clickPixel(pixel) {
     pixel.color = "#ffffff";
   }
 
-  addPixel() {
-    let pixel = new Pixel();
-    this.pixels = [ ...this.pixels, pixel ];
+  addRow() {
+    // let pixel = new Pixel();
+    // this.pixels = [ ...this.pixels, pixel ];
+    let row = [];
+    for (let i = 0; i < this.pixels[0].length; i++) {
+      row.push(new Pixel());
+    }
+    this.pixels = [ ...this.pixels, row ]
+  }
+
+  addColumn() {
+    this.pixels = this.pixels.map(row => [ ...row, new Pixel() ]);
   }
 }
