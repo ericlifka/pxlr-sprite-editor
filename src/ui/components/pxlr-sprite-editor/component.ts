@@ -15,6 +15,7 @@ export default class PxlrSpriteEditor extends Component {
   @tracked height: number = 16;
   @tracked activeColor: string = "green";
   @tracked pixels: Pixel[][];
+  @tracked spriteBlob: string;
 
   didInsertElement() {
     this.activeColor = "#" + this.element.getElementsByClassName('jscolor')[0].value;
@@ -26,6 +27,7 @@ export default class PxlrSpriteEditor extends Component {
 
   clickPixel(pixel) {
     pixel.color = this.activeColor;
+    this.spriteBlob = this.serializeSprite();
   }
 
   updateDimensions(dimension, event) {
@@ -42,11 +44,17 @@ export default class PxlrSpriteEditor extends Component {
       rows.push(row);
     }
     this.pixels = rows;
+    this.spriteBlob = this.serializeSprite();
     this.spriteActive = true;
   }
 
   cancelSprite() {
     this.pixels = null;
+    this.spriteBlob = null;
     this.spriteActive = false;
+  }
+
+  serializeSprite() {
+    return JSON.stringify(this.pixels.map(row => row.map(pixel => pixel.color)));
   }
 }

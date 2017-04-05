@@ -12,6 +12,14 @@
     margin-top: 20px;
   }
 
+  .sprite-blob {
+    font-family: monospace;
+    font-size: 10px;
+    color: #666;
+    word-wrap: break-word;
+    max-width: 400px;
+  }
+
   .pixel-grid {
     display: inline-block;
     box-shadow: 0px 0px 15px 2px #666;

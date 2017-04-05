@@ -38,4 +38,10 @@
   <div class="color-picker">
     Color: <input class="jscolor" value="ab2567" onchange={{action colorChange}}>
   </div>
+
+  {{#if spriteBlob}}
+    <div class="sprite-blob">
+      {{spriteBlob}}
+    </div>
+  {{/if}}
 </div>
