@@ -16,6 +16,7 @@ export default class PxlrSpriteEditor extends Component {
   @tracked activeColor: string = "green";
   @tracked pixels: Pixel[][];
   @tracked spriteBlob: string;
+  @tracked whiteAsEmpty: boolean = true;
 
   didInsertElement() {
     this.activeColor = "#" + this.element.getElementsByClassName('jscolor')[0].value;
@@ -55,6 +56,17 @@ export default class PxlrSpriteEditor extends Component {
   }
 
   serializeSprite() {
-    return JSON.stringify(this.pixels.map(row => row.map(pixel => pixel.color)));
+    let whiteAsEmpty = this.whiteAsEmpty;
+    return JSON.stringify(this.pixels.map(row => row.map(pixel => {
+      if (pixel.color.toLowerCase() === "#ffffff" && whiteAsEmpty) {
+        return null;
+      }
+      return pixel.color;
+    })));
+  }
+
+  onToggle() {
+    this.whiteAsEmpty = !this.whiteAsEmpty;
+    this.spriteBlob = this.serializeSprite();
   }
 }

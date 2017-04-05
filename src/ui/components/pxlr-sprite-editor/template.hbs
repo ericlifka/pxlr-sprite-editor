@@ -40,6 +40,12 @@
   </div>
 
   {{#if spriteBlob}}
+    <label>
+      Treat white pixels as empty
+      <input type="checkbox"
+             checked={{whiteAsEmpty}}
+             onchange={{action onToggle}}>
+    </label>
     <div class="sprite-blob">
       {{spriteBlob}}
     </div>
