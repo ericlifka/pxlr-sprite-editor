@@ -1,11 +1,22 @@
 .pxlr-sprite-editor {
+  .color-picker {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    .color-swatch {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+    }
+  }
   .pixel-grid {
     .row {
       display: flex;
       flex-direction: row;
 
       .pixel {
-        border: 1px solid black;
+        //border: 1px solid black;
         width: 20px;
         height: 20px;
       }

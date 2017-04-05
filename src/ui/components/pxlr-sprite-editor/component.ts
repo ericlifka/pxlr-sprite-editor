@@ -10,15 +10,15 @@ class Pixel {
 }
 
 export default class PxlrSpriteEditor extends Component {
+  @tracked activeColor: string = "green";
   @tracked pixels: Pixel[][] = [ [ new Pixel() ] ];
 
   changeColor(color) {
-    // this.pixels[0].color = color;
-    this.pixels.forEach(row => row.forEach(pixel => pixel.color = color));
+    this.activeColor = color;
   }
 
   clickPixel(pixel) {
-    pixel.color = "#ffffff";
+    pixel.color = this.activeColor;
   }
 
   addRow() {

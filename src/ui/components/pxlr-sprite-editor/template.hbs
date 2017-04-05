@@ -1,7 +1,10 @@
 <div class="pxlr-sprite-editor">
-  <button onclick={{action changeColor "blue"}}>Blue!</button>
-  <button onclick={{action changeColor "green"}}>Green!</button>
-  <button onclick={{action changeColor "red"}}>Red!</button>
+  <div class="color-picker">
+    <button onclick={{action changeColor "blue"}}>Blue!</button>
+    <button onclick={{action changeColor "green"}}>Green!</button>
+    <button onclick={{action changeColor "red"}}>Red!</button>
+    <div class="color-swatch" style="background-color: {{activeColor}}"></div>
+  </div>
 
   <div class="pixel-grid">
 
