@@ -28,26 +28,6 @@ export default class PxlrSpriteEditor extends Component {
     pixel.color = this.activeColor;
   }
 
-  addRow() {
-    let row = [];
-    for (let i = 0; i < this.pixels[0].length; i++) {
-      row.push(new Pixel());
-    }
-    this.pixels = [...this.pixels, row]
-  }
-  removeRow() {
-    this.pixels.pop();
-    this.pixels = this.pixels;
-  }
-
-  addColumn() {
-    this.pixels = this.pixels.map(row => [...row, new Pixel()]);
-  }
-  removeColumn() {
-    this.pixels.forEach(row => row.pop());
-    this.pixels = this.pixels;
-  }
-
   updateDimensions(dimension, event) {
     this[dimension] = parseInt(event.target.value, 10);
   }
