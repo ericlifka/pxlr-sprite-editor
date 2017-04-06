@@ -1,7 +1,12 @@
 # pxlr-sprite-editor
 
-This README outlines the details of collaborating on this Glimmer application.
-A short introduction of this app could easily go here.
+Simple tool for creating pixel art images.
+Purposes of project:
+
+1) Learn Glimmerjs as a standalone from ember
+2) Have a tool that exports pixel art as json blobs instead of image file formats
+
+Link to demo: http://ericlifka.github.com/pxlr-sprite-editor/
 
 ## Prerequisites
 
