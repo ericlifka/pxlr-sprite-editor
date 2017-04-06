@@ -12,7 +12,9 @@
               <div
                 class="pixel"
                 style="background-color: {{pixel.color}}"
-                onclick={{action clickPixel pixel}}
+                onmousedown={{action onMouseDown pixel}}
+                onmouseup={{action onMouseUp}}
+                onmouseover={{action onMouseOver pixel}}
               ></div>
             {{/each}}
 

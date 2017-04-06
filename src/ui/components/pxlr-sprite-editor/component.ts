@@ -17,6 +17,7 @@ export default class PxlrSpriteEditor extends Component {
   @tracked pixels: Pixel[][];
   @tracked spriteBlob: string;
   @tracked whiteAsEmpty: boolean = true;
+  @tracked mouseDown: boolean = false;
 
   didInsertElement() {
     this.activeColor = "#" + this.element.getElementsByClassName('jscolor')[0].value;
@@ -29,6 +30,19 @@ export default class PxlrSpriteEditor extends Component {
   clickPixel(pixel) {
     pixel.color = this.activeColor;
     this.spriteBlob = this.serializeSprite();
+  }
+
+  onMouseDown(pixel) {
+    this.mouseDown = true;
+    this.clickPixel(pixel);
+  }
+  onMouseUp() {
+    this.mouseDown = false;
+  }
+  onMouseOver(pixel) {
+    if (this.mouseDown) {
+      this.clickPixel(pixel);
+    }
   }
 
   updateDimensions(dimension, event) {
