@@ -21,6 +21,10 @@ export default class PxlrSpriteEditor extends Component {
 
   didInsertElement() {
     this.activeColor = "#" + this.element.getElementsByClassName('jscolor')[0].value;
+
+    document.addEventListener('mouseup', () => {
+      this.mouseDown = false
+    });
   }
 
   colorChange(event) {
@@ -35,9 +39,6 @@ export default class PxlrSpriteEditor extends Component {
   onMouseDown(pixel) {
     this.mouseDown = true;
     this.clickPixel(pixel);
-  }
-  onMouseUp() {
-    this.mouseDown = false;
   }
   onMouseOver(pixel) {
     if (this.mouseDown) {
