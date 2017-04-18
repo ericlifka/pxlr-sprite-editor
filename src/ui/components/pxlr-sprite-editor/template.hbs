@@ -1,5 +1,9 @@
 <div class="pxlr-sprite-editor">
 
-  <pixel-grid />
+  {{#if store.editingSprite}}
+    <pixel-grid />
+  {{else}}
+    <button onclick={{action activateSprite}}>activate</button>
+  {{/if}}
 
 </div>
