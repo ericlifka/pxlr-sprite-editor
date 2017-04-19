@@ -1,0 +1,9 @@
+<div class="create-sprite-form">
+  <label for="width">Width:</label>
+  <input id="width" defaultValue={{width}} oninput={{action updateDimensions "width"}} />
+
+  <label for="height">Height:</label>
+  <input id="height" defaultValue={{height}} oninput={{action updateDimensions "height"}} />
+
+  <button onclick={{action createSprite}}>Create Sprite</button>
+</div>

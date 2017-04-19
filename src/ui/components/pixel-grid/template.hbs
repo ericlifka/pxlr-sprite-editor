@@ -1,40 +1,26 @@
 <div class="pixel-grid">
-  {{#if spriteActive}}
-    <button onclick={{action cancelSprite}}>Close Sprite</button>
+  <button onclick={{action cancelSprite}}>Close Sprite</button>
 
-    <div>
-      <div class="pixel-grid">
+  <div>
+    <div class="pixel-grid">
 
-        {{#each pixels key="@index" as |row|}}
-          <div class="row">
+      {{#each store.pixels key="@index" as |row|}}
+        <div class="row">
 
-            {{#each row key="id" as |pixel|}}
-              <div
-                class="pixel"
-                style="background-color: {{pixel.color}}"
-                onmousedown={{action onMouseDown pixel}}
-                onmouseover={{action onMouseOver pixel}}
-              ></div>
-            {{/each}}
+          {{#each row key="id" as |pixel|}}
+            <div
+              class="pixel"
+              style="background-color: {{pixel.color}}"
+              onmousedown={{action onMouseDown pixel}}
+              onmouseover={{action onMouseOver pixel}}
+            ></div>
+          {{/each}}
 
-          </div>
-        {{/each}}
+        </div>
+      {{/each}}
 
-      </div>
     </div>
-  {{else}}
-    <div class="controls">
-      <div class="dimensions">
-        <label>Width:</label>
-        <input defaultValue={{width}} oninput={{action updateDimensions "width"}} />
-
-        <label>Height:</label>
-        <input defaultValue={{height}} oninput={{action updateDimensions "height"}} />
-
-        <button onclick={{action createSprite}}>Create Sprite</button>
-      </div>
-    </div>
-  {{/if}}
+  </div>
 
   <div class="color-picker">
     Color: <input class="jscolor" value="ffffff" onchange={{action colorChange}}>
@@ -45,7 +31,7 @@
       Treat white pixels as empty
       <input type="checkbox"
              checked={{whiteAsEmpty}}
-             onchange={{action onToggle}}>
+               onchange={{action onToggle}}>
     </label>
     <div class="sprite-blob">
       {{spriteBlob}}
