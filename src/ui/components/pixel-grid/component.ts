@@ -20,8 +20,7 @@ export default class PixelGrid extends Component {
   }
 
   clickPixel(pixel) {
-    pixel.color = this.activeColor;
-    // this.spriteBlob = this.serializeSprite();
+    this.store.changePixelColor(pixel, this.activeColor);
   }
 
   onMouseDown(pixel) {

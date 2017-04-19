@@ -54,6 +54,11 @@ export default class Store {
     this.whiteAsEmpty = !this.whiteAsEmpty;
     this.spriteBlob = this.serializeSprite();
   }
+
+  changePixelColor(pixel, activeColor) {
+    pixel.color = activeColor;
+    this.spriteBlob = this.serializeSprite();
+  }
 }
 
 
