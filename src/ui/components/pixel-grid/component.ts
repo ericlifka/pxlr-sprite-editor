@@ -35,13 +35,10 @@ export default class PixelGrid extends Component {
   }
 
   cancelSprite() {
-    // this.pixels = null;
-    // this.spriteBlob = null;
-    // this.spriteActive = false;
+    this.store.closeSprite();
   }
 
   onToggle() {
-    // this.whiteAsEmpty = !this.whiteAsEmpty;
-    // this.spriteBlob = this.serializeSprite();
+    this.store.toggleWhiteAsEmpty();
   }
 }

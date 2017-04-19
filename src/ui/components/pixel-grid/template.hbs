@@ -26,15 +26,14 @@
     Color: <input class="jscolor" value="ffffff" onchange={{action colorChange}}>
   </div>
 
-  {{#if spriteBlob}}
-    <label>
-      Treat white pixels as empty
+  {{#if store.spriteBlob}}
+    <label>Treat white pixels as empty
       <input type="checkbox"
-             checked={{whiteAsEmpty}}
-               onchange={{action onToggle}}>
+             checked={{store.whiteAsEmpty}}
+             onchange={{action onToggle}}>
     </label>
     <div class="sprite-blob">
-      {{spriteBlob}}
+      {{store.spriteBlob}}
     </div>
   {{/if}}
 </div>

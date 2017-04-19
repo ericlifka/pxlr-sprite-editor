@@ -5,6 +5,7 @@ let INSTANCE: Store = null;
 
 export default class Store {
   @tracked editingSprite: boolean = false;
+  @tracked whiteAsEmpty: boolean = true;
   @tracked pixels: Pixel[];
   @tracked spriteBlob: string;
 
@@ -35,15 +36,23 @@ export default class Store {
     this.editingSprite = true;
   }
 
+  closeSprite() {
+    this.editingSprite = false;
+  }
+
   serializeSprite() {
-    // let whiteAsEmpty = this.whiteAsEmpty;
-    let whiteAsEmpty = true;
+    let whiteAsEmpty = this.whiteAsEmpty;
     return JSON.stringify(this.pixels.map(row => row.map(pixel => {
       if (pixel.color.toLowerCase() === "#ffffff" && whiteAsEmpty) {
         return null;
       }
       return pixel.color;
     })));
+  }
+
+  toggleWhiteAsEmpty() {
+    this.whiteAsEmpty = !this.whiteAsEmpty;
+    this.spriteBlob = this.serializeSprite();
   }
 }
 
