@@ -8,8 +8,9 @@ export default class PixelGrid extends Component {
   @tracked store: Store = Store.getStore();
 
   didInsertElement() {
-    window['jscolor'](this.element.getElementsByClassName('jscolor')[0]);
-    this.activeColor = "#" + this.element.getElementsByClassName('jscolor')[0].value;
+    let inputEle = this.element.getElementsByClassName('jscolor')[0];
+    window['jscolor'](inputEle);
+    this.activeColor = "#" + inputEle.value;
 
     document.addEventListener('mouseup', () => {
       this.mouseDown = false
