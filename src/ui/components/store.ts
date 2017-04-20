@@ -10,8 +10,11 @@ export default class Store {
   @tracked spriteBlob: string;
   @tracked sprites: any[];
 
-  private Constructor() {
+  private constructor() {
     let spriteList = localStorage['savedSpritesList'];
+    if (!spriteList) {
+      spriteList = [];
+    }
     if (typeof spriteList === "string") {
       spriteList = JSON.parse(spriteList);
     }
@@ -45,7 +48,7 @@ export default class Store {
     return INSTANCE;
   }
 
-  createSprite(width, height) {
+  createSprite(width, height, name = "untitled" + Date.now()) {
     let rows = [];
     for (let h = 0; h < height; h++) {
       let row = [];
@@ -54,6 +57,9 @@ export default class Store {
       }
       rows.push(row);
     }
+    rows['name'] = name;
+
+    this.sprites.push(rows);
     this.pixels = rows;
     this.spriteBlob = this.serializeSprite();
     this.editingSprite = true;

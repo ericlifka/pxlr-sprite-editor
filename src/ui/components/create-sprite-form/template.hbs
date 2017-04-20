@@ -1,9 +1,18 @@
 <div class="create-sprite-form">
-  <label for="width">Width:</label>
-  <input id="width" defaultValue={{width}} oninput={{action updateDimensions "width"}} />
+  <div>
+    <label for="name">Sprite Name:</label>
+    <input id="name" class="focus-on-load" oninput={{action updateName}}/>
+  </div>
 
-  <label for="height">Height:</label>
-  <input id="height" defaultValue={{height}} oninput={{action updateDimensions "height"}} />
+  <div>
+    <label for="width">Width:</label>
+    <input id="width" defaultValue={{width}} oninput={{action updateDimensions "width"}} />
 
-  <button onclick={{action createSprite}}>Create Sprite</button>
+    <label for="height">Height:</label>
+    <input id="height" defaultValue={{height}} oninput={{action updateDimensions "height"}} />
+  </div>
+
+  <div>
+    <button onclick={{action createSprite}}>Create Sprite</button>
+  </div>
 </div>
