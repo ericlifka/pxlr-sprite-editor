@@ -2,9 +2,9 @@ import Component, {tracked} from "@glimmer/component";
 import Store from "../store";
 
 export default class CreateSpriteForm extends Component {
-  width: number = 32;
-  height: number = 32;
-  name: string = "";
+  @tracked width: number = 32;
+  @tracked height: number = 32;
+  @tracked name: string = "";
 
   @tracked store: Store = Store.getStore();
 
