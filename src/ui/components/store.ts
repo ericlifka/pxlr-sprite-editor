@@ -6,7 +6,7 @@ let INSTANCE: Store = null;
 export default class Store {
   @tracked editingSprite: boolean = false;
   @tracked whiteAsEmpty: boolean = true;
-  @tracked pixels: Pixel[];
+  @tracked pixels: Pixel[][];
   @tracked spriteBlob: string;
   @tracked sprites: any[] = [];
 
@@ -39,6 +39,12 @@ export default class Store {
     this.editingSprite = true;
     this.serializeSprite();
     localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map(sprite => sprite['name']));
+  }
+
+  openSprite(sprite) {
+    this.pixels = sprite;
+    this.editingSprite = true;
+    this.serializeSprite();
   }
 
   closeSprite() {

@@ -4,6 +4,14 @@
     <pixel-grid />
   {{else}}
     <create-sprite-form />
+
+    <div>
+      {{#each store.sprites key="name" as |sprite|}}
+        <button onclick={{action openSprite sprite}}>
+          {{sprite.name}}
+        </button>
+      {{/each}}
+    </div>
   {{/if}}
 
 </div>
