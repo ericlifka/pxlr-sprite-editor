@@ -11,32 +11,7 @@ export default class Store {
   @tracked sprites: any[];
 
   private constructor() {
-    let spriteList = localStorage['savedSpritesList'];
-    if (!spriteList) {
-      spriteList = [];
-    }
-    if (typeof spriteList === "string") {
-      spriteList = JSON.parse(spriteList);
-    }
-
-    this.sprites = spriteList.map(spriteName => {
-      let spriteDef = localStorage[spriteName];
-      if (typeof spriteDef === "string") {
-        spriteDef = JSON.parse(spriteDef);
-      }
-      let rows = spriteDef.map(row => {
-        return row.map(colorCode => {
-          if (!colorCode) {
-            colorCode = "#FFFFFF";
-          }
-
-          return new Pixel(colorCode);
-        });
-      });
-      rows['name'] = spriteName;
-
-      return rows;
-    });
+    this.sprites = this.parseLocalStorageSprites();
   }
 
   public static getStore(): Store {
@@ -88,6 +63,20 @@ export default class Store {
     pixel.color = activeColor;
     this.spriteBlob = this.serializeSprite();
   }
+
+  parseLocalStorageSprites() {
+    return JSON.parse(localStorage['savedSpritesList'] || "[]")
+      .map(spriteName => {
+        let rows = JSON.parse(localStorage[spriteName] || "[[\"#FFFFFF\"]]")
+          .map(row =>
+            row.map(colorCode =>
+              colorCode ?
+                new Pixel(colorCode) :
+                new Pixel("#FFFFFF")));
+
+        rows['name'] = spriteName;
+
+        return rows;
+      });
+  }
 }
-
-
