@@ -8,9 +8,32 @@ export default class Store {
   @tracked whiteAsEmpty: boolean = true;
   @tracked pixels: Pixel[];
   @tracked spriteBlob: string;
+  @tracked sprites: any[];
 
   private Constructor() {
+    let spriteList = localStorage['savedSpritesList'];
+    if (typeof spriteList === "string") {
+      spriteList = JSON.parse(spriteList);
+    }
 
+    this.sprites = spriteList.map(spriteName => {
+      let spriteDef = localStorage[spriteName];
+      if (typeof spriteDef === "string") {
+        spriteDef = JSON.parse(spriteDef);
+      }
+      let rows = spriteDef.map(row => {
+        return row.map(colorCode => {
+          if (!colorCode) {
+            colorCode = "#FFFFFF";
+          }
+
+          return new Pixel(colorCode);
+        });
+      });
+      rows['name'] = spriteName;
+
+      return rows;
+    });
   }
 
   public static getStore(): Store {
