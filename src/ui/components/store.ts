@@ -8,7 +8,7 @@ export default class Store {
   @tracked whiteAsEmpty: boolean = true;
   @tracked pixels: Pixel[];
   @tracked spriteBlob: string;
-  @tracked sprites: any[];
+  @tracked sprites: any[] = [];
 
   private constructor() {
     this.sprites = this.parseLocalStorageSprites();
@@ -36,32 +36,37 @@ export default class Store {
 
     this.sprites.push(rows);
     this.pixels = rows;
-    this.spriteBlob = this.serializeSprite();
     this.editingSprite = true;
+    this.serializeSprite();
+    localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map(sprite => sprite['name']));
   }
 
   closeSprite() {
     this.editingSprite = false;
+    this.pixels = null;
+    this.spriteBlob = null;
   }
 
   serializeSprite() {
     let whiteAsEmpty = this.whiteAsEmpty;
-    return JSON.stringify(this.pixels.map(row => row.map(pixel => {
-      if (pixel.color.toLowerCase() === "#ffffff" && whiteAsEmpty) {
-        return null;
-      }
-      return pixel.color;
-    })));
+    let spriteName = this.pixels['name'];
+    this.spriteBlob = JSON.stringify(this.pixels.map(row =>
+      row.map(pixel =>
+        pixel.color.toLowerCase() === "#ffffff" && whiteAsEmpty ?
+          null :
+          pixel.color)));
+
+    localStorage[spriteName] = this.spriteBlob;
   }
 
   toggleWhiteAsEmpty() {
     this.whiteAsEmpty = !this.whiteAsEmpty;
-    this.spriteBlob = this.serializeSprite();
+    this.serializeSprite();
   }
 
   changePixelColor(pixel, activeColor) {
     pixel.color = activeColor;
-    this.spriteBlob = this.serializeSprite();
+    this.serializeSprite();
   }
 
   parseLocalStorageSprites() {
