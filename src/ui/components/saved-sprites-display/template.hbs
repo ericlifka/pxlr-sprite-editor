@@ -1,0 +1,13 @@
+<div class="saved-sprites-display">
+  {{#each store.sprites key="name" as |sprite|}}
+
+    <button class="sprite-selector" onclick={{action openSprite sprite}}>
+      <label>{{sprite.name}}</label>
+
+      <pixel-grid
+        @editable="false"
+        @sprite={{sprite}} />
+    </button>
+
+  {{/each}}
+</div>
