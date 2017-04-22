@@ -1,40 +1,16 @@
 <div class="pixel-grid">
-  <button onclick={{action cancelSprite}}>Close Sprite</button>
-  <div>{{store.pixels.name}}</div>
 
-  <div>
-    <div class="pixel-grid">
+  {{#each @sprite key="@index" as |row|}}
+    <div class="row">
 
-      {{#each store.pixels key="@index" as |row|}}
-        <div class="row">
-
-          {{#each row key="id" as |pixel|}}
-            <div
-              class="pixel"
-              style="background-color: {{pixel.color}}"
-              onmousedown={{action onMouseDown pixel}}
-              onmouseover={{action onMouseOver pixel}}
-            ></div>
-          {{/each}}
-
-        </div>
+      {{#each row key="id" as |pixel|}}
+        <div class="pixel"
+             style="background-color: {{pixel.color}}"
+             onmousedown={{action onMouseDown pixel}}
+             onmouseover={{action onMouseOver pixel}}></div>
       {{/each}}
 
     </div>
-  </div>
+  {{/each}}
 
-  <div class="color-picker">
-    Color: <input class="jscolor" value="ffffff" onchange={{action colorChange}}>
-  </div>
-
-  {{#if store.spriteBlob}}
-    <label>Treat white pixels as empty
-      <input type="checkbox"
-             checked={{store.whiteAsEmpty}}
-             onchange={{action onToggle}}>
-    </label>
-    <div class="sprite-blob">
-      {{store.spriteBlob}}
-    </div>
-  {{/if}}
 </div>

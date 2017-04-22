@@ -1,0 +1,25 @@
+<div class="edit-pane">
+  <button onclick={{action cancelSprite}}>Close Sprite</button>
+  <div>{{store.pixels.name}}</div>
+
+  <div>
+    <pixel-grid
+      @sprite={{store.pixels}}
+      @selectPixel={{action selectPixel}} />
+  </div>
+
+  <div class="color-picker">
+    Color: <input class="jscolor" value="ffffff" onchange={{action colorChange}}>
+  </div>
+
+  {{#if store.spriteBlob}}
+    <label>Treat white pixels as empty
+      <input type="checkbox"
+             checked={{store.whiteAsEmpty}}
+             onchange={{action onToggle}}>
+    </label>
+    <div class="sprite-blob">
+      {{store.spriteBlob}}
+    </div>
+  {{/if}}
+</div>
