@@ -2,15 +2,22 @@ import Component, {tracked} from "@glimmer/component";
 
 export default class PixelGrid extends Component {
   @tracked mouseDown: boolean = false;
+  editable: boolean;
 
   didInsertElement() {
-    document.addEventListener('mouseup', () => {
-      this.mouseDown = false
-    });
+    this.editable = JSON.parse(this.args.editable || 'false');
+
+    if (this.editable) {
+      document.addEventListener('mouseup', () => {
+        this.mouseDown = false
+      });
+    }
   }
 
   clickPixel(pixel) {
-    this.args.selectPixel(pixel);
+    if (this.editable) {
+      this.args.selectPixel(pixel);
+    }
   }
 
   onMouseDown(pixel) {
