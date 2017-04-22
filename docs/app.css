@@ -1,28 +1,45 @@
-.pxlr-sprite-editor .controls .dimensions input {
+.create-sprite-form input {
   width: 40px;
   margin-right: 20px; }
 
-.pxlr-sprite-editor .color-picker {
+.edit-pane .color-picker {
   margin-top: 20px; }
 
-.pxlr-sprite-editor .sprite-blob {
+.edit-pane .sprite-blob {
   font-family: monospace;
   font-size: 10px;
   color: #666;
   word-wrap: break-word;
   max-width: 400px; }
 
-.pxlr-sprite-editor .pixel-grid {
+.pixel-grid {
   display: inline-block;
   box-shadow: 0px 0px 15px 2px #666;
   margin: 10px 0; }
-  .pxlr-sprite-editor .pixel-grid .row {
+  .pixel-grid .row {
     display: flex;
     flex-direction: row; }
-    .pxlr-sprite-editor .pixel-grid .row .pixel {
+    .pixel-grid .row .pixel {
       width: 20px;
       height: 20px; }
-    .pxlr-sprite-editor .pixel-grid .row .pixel:hover {
+    .pixel-grid .row .pixel:hover {
       border: 1px solid #666;
       width: 18px;
       height: 18px; }
+
+.saved-sprites-display {
+  display: flex;
+  flex-direction: row; }
+  .saved-sprites-display .sprite-selector {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; }
+    .saved-sprites-display .sprite-selector label {
+      cursor: pointer; }
+    .saved-sprites-display .sprite-selector .pixel-grid .row .pixel {
+      width: 3px;
+      height: 3px; }
+      .saved-sprites-display .sprite-selector .pixel-grid .row .pixel:hover {
+        border: none;
+        width: 3px;
+        height: 3px; }
