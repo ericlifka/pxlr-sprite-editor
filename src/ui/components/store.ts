@@ -1,12 +1,13 @@
 import {tracked} from "@glimmer/component";
 import Pixel from "./pixel";
+import Sprite from "./sprite";
 
 let INSTANCE: Store = null;
 
 export default class Store {
   @tracked editingSprite: boolean = false;
   @tracked whiteAsEmpty: boolean = true;
-  @tracked pixels: Pixel[][];
+  @tracked activeSprite: Sprite;
   @tracked spriteBlob: string;
   @tracked sprites: any[] = [];
 
@@ -24,39 +25,30 @@ export default class Store {
   }
 
   createSprite(width, height, name = "untitled" + Date.now()) {
-    let rows = [];
-    for (let h = 0; h < height; h++) {
-      let row = [];
-      for (let w = 0; w < width; w++) {
-        row.push(new Pixel());
-      }
-      rows.push(row);
-    }
-    rows['name'] = name;
-
-    this.sprites.push(rows);
-    this.pixels = rows;
+    let sprite = Sprite.initializeEmptySprite(name, width, height);
+    this.sprites.push(sprite);
+    this.activeSprite = sprite;
     this.editingSprite = true;
     this.serializeSprite();
     localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map(sprite => sprite['name']));
   }
 
   openSprite(sprite) {
-    this.pixels = sprite;
+    this.activeSprite = sprite;
     this.editingSprite = true;
     this.serializeSprite();
   }
 
   closeSprite() {
     this.editingSprite = false;
-    this.pixels = null;
+    this.activeSprite = null;
     this.spriteBlob = null;
   }
 
   serializeSprite() {
     let whiteAsEmpty = this.whiteAsEmpty;
-    let spriteName = this.pixels['name'];
-    this.spriteBlob = JSON.stringify(this.pixels.map(row =>
+    let spriteName = this.activeSprite['name'];
+    this.spriteBlob = JSON.stringify(this.activeSprite.pixels.map(row =>
       row.map(pixel =>
         pixel.color.toLowerCase() === "#ffffff" && whiteAsEmpty ?
           null :
@@ -85,9 +77,7 @@ export default class Store {
                 new Pixel(colorCode) :
                 new Pixel("#FFFFFF")));
 
-        rows['name'] = spriteName;
-
-        return rows;
+        return Sprite.initializeSavedSprite(spriteName, rows);
       });
   }
 }

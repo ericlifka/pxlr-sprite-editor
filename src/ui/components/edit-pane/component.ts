@@ -21,7 +21,7 @@ export default class EditPane extends Component {
     this.store.changePixelColor(pixel, this.activeColor);
   }
 
-  cancelSprite() {
+  closeSprite() {
     this.store.closeSprite();
   }
 
