@@ -45,4 +45,12 @@ export default class Sprite {
     sprite.width = pixels[0].length;
     return sprite;
   }
+
+  getBlob() {
+    let whiteAsEmpty = this.whiteAsEmpty;
+
+    return JSON.stringify(
+      this.pixels.map(row => row.map(pixel =>
+        whiteAsEmpty && pixel.color.toLowerCase() === "#ffffff" ? null : pixel.color)));
+  }
 }

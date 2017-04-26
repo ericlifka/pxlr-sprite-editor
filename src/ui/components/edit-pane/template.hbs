@@ -16,7 +16,7 @@
   {{#if store.spriteBlob}}
     <label>Treat white pixels as empty
       <input type="checkbox"
-             checked={{store.whiteAsEmpty}}
+             checked={{store.activeSprite.whiteAsEmpty}}
              onchange={{action onToggle}}>
     </label>
     <div class="sprite-blob">

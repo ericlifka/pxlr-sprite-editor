@@ -1,12 +1,10 @@
 import {tracked} from "@glimmer/component";
-import Pixel from "./pixel";
 import Sprite from "./sprite";
 
 let INSTANCE: Store = null;
 
 export default class Store {
   @tracked editingSprite: boolean = false;
-  @tracked whiteAsEmpty: boolean = true;
   @tracked activeSprite: Sprite;
   @tracked spriteBlob: string;
   @tracked sprites: any[] = [];
@@ -31,12 +29,13 @@ export default class Store {
     this.editingSprite = true;
 
     this.saveSpriteList();
+    this.regenerateBlob();
   }
 
   openSprite(sprite) {
     this.activeSprite = sprite;
     this.editingSprite = true;
-    // this.activeSprite.save();
+    this.regenerateBlob();
   }
 
   closeSprite() {
@@ -46,8 +45,8 @@ export default class Store {
   }
 
   toggleWhiteAsEmpty() {
-    this.whiteAsEmpty = !this.whiteAsEmpty;
-    // this.serializeSprite();
+    this.activeSprite.whiteAsEmpty = !this.activeSprite.whiteAsEmpty;
+    this.regenerateBlob();
   }
 
   changePixelColor(pixel, activeColor) {
@@ -62,5 +61,9 @@ export default class Store {
 
   private saveSpriteList() {
     localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map(sprite => sprite['name']));
+  }
+
+  private regenerateBlob() {
+    this.spriteBlob = this.activeSprite.getBlob();
   }
 }
