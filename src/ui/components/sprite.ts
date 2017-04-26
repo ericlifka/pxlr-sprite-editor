@@ -26,23 +26,26 @@ export default class Sprite {
   }
 
   save() {
-    localStorage[this.name] = JSON.stringify(
-      this.pixels.map(row =>
-        row.map(pixel => pixel.color.toLowerCase())));
+    localStorage[this.name] = JSON.stringify({
+      name: this.name,
+      width: this.width,
+      height: this.height,
+      whiteAsEmpty: this.whiteAsEmpty,
+      pixels: this.pixels.map(row => row.map(pixel => pixel.color.toLowerCase()))
+    });
   }
 
   static load(name: string) {
-    let pixels = JSON.parse(localStorage[name] || "[[\"#FFFFFF\"]]")
-      .map(row => row.map(colorCode =>
-        colorCode ?
-          new Pixel(colorCode) :
-          new Pixel("#FFFFFF")));
-
     let sprite = new Sprite();
-    sprite.name = name;
-    sprite.pixels = pixels;
-    sprite.height = pixels.length;
-    sprite.width = pixels[0].length;
+    let descriptor = JSON.parse(localStorage[name]);
+    sprite.name = descriptor.name;
+    sprite.whiteAsEmpty = descriptor.whiteAsEmpty;
+    sprite.height = descriptor.height;
+    sprite.width = descriptor.width;
+    sprite.pixels = descriptor.pixels.map(
+      row => row.map(color => new Pixel(color))
+    );
+
     return sprite;
   }
 
@@ -52,5 +55,10 @@ export default class Sprite {
     return JSON.stringify(
       this.pixels.map(row => row.map(pixel =>
         whiteAsEmpty && pixel.color.toLowerCase() === "#ffffff" ? null : pixel.color)));
+  }
+
+  toggleWhiteAsEmpty() {
+    this.whiteAsEmpty = !this.whiteAsEmpty;
+    this.save();
   }
 }

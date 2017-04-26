@@ -45,7 +45,7 @@ export default class Store {
   }
 
   toggleWhiteAsEmpty() {
-    this.activeSprite.whiteAsEmpty = !this.activeSprite.whiteAsEmpty;
+    this.activeSprite.toggleWhiteAsEmpty();
     this.regenerateBlob();
   }
 
