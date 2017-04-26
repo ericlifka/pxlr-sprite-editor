@@ -29,14 +29,14 @@ export default class Store {
     this.sprites.push(sprite);
     this.activeSprite = sprite;
     this.editingSprite = true;
-    this.serializeSprite();
-    localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map(sprite => sprite['name']));
+
+    this.saveSpriteList();
   }
 
   openSprite(sprite) {
     this.activeSprite = sprite;
     this.editingSprite = true;
-    this.serializeSprite();
+    // this.activeSprite.save();
   }
 
   closeSprite() {
@@ -45,39 +45,22 @@ export default class Store {
     this.spriteBlob = null;
   }
 
-  serializeSprite() {
-    let whiteAsEmpty = this.whiteAsEmpty;
-    let spriteName = this.activeSprite['name'];
-    this.spriteBlob = JSON.stringify(this.activeSprite.pixels.map(row =>
-      row.map(pixel =>
-        pixel.color.toLowerCase() === "#ffffff" && whiteAsEmpty ?
-          null :
-          pixel.color)));
-
-    localStorage[spriteName] = this.spriteBlob;
-  }
-
   toggleWhiteAsEmpty() {
     this.whiteAsEmpty = !this.whiteAsEmpty;
-    this.serializeSprite();
+    // this.serializeSprite();
   }
 
   changePixelColor(pixel, activeColor) {
     pixel.color = activeColor;
-    this.serializeSprite();
+    this.activeSprite.save();
   }
 
   parseLocalStorageSprites() {
     return JSON.parse(localStorage['savedSpritesList'] || "[]")
-      .map(spriteName => {
-        let rows = JSON.parse(localStorage[spriteName] || "[[\"#FFFFFF\"]]")
-          .map(row =>
-            row.map(colorCode =>
-              colorCode ?
-                new Pixel(colorCode) :
-                new Pixel("#FFFFFF")));
+      .map(name => Sprite.load(name));
+  }
 
-        return Sprite.initializeSavedSprite(spriteName, rows);
-      });
+  private saveSpriteList() {
+    localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map(sprite => sprite['name']));
   }
 }

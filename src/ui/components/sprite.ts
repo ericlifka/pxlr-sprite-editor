@@ -6,6 +6,7 @@ export default class Sprite {
   @tracked name: string;
   @tracked width: number;
   @tracked height: number;
+  @tracked whiteAsEmpty: boolean = true;
 
   static initializeEmptySprite(name, width, height) {
     let sprite = new Sprite();
@@ -20,10 +21,23 @@ export default class Sprite {
       }
       sprite.pixels.push(row);
     }
+    sprite.save();
     return sprite;
   }
 
-  static initializeSavedSprite(name: string, pixels: Pixel[][]) {
+  save() {
+    localStorage[this.name] = JSON.stringify(
+      this.pixels.map(row =>
+        row.map(pixel => pixel.color.toLowerCase())));
+  }
+
+  static load(name: string) {
+    let pixels = JSON.parse(localStorage[name] || "[[\"#FFFFFF\"]]")
+      .map(row => row.map(colorCode =>
+        colorCode ?
+          new Pixel(colorCode) :
+          new Pixel("#FFFFFF")));
+
     let sprite = new Sprite();
     sprite.name = name;
     sprite.pixels = pixels;
