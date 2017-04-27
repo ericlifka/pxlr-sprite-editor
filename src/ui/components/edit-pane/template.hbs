@@ -1,12 +1,14 @@
 <div class="edit-pane">
   <button onclick={{action closeSprite}}>Close Sprite</button>
-  <div>{{store.pixels.name}}</div>
+  <div>{{store.activeSprite.name}}</div>
 
   <div>
-    <pixel-grid
-      @sprite={{store.activeSprite}}
-      @editable=true
-      @selectPixel={{action selectPixel}} />
+    {{#each store.activeSprite.frames key="@index" as |frame|}}
+      <pixel-grid
+        @editable=true
+        @frame={{frame}}
+        @selectPixel={{action selectPixel}} />
+    {{/each}}
   </div>
 
   <div class="color-picker">

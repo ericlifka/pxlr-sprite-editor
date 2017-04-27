@@ -1,8 +1,12 @@
 import {tracked} from "@glimmer/component";
 import Pixel from "./pixel";
 
+type Row = Pixel[];
+type Frame = Row[];
+
 export default class Sprite {
-  @tracked pixels: Pixel[][];
+  @tracked frames: Frame[];
+  @tracked firstFrame: Frame;
   @tracked name: string;
   @tracked width: number;
   @tracked height: number;
@@ -13,15 +17,18 @@ export default class Sprite {
     sprite.name = name;
     sprite.width = width;
     sprite.height = height;
-    sprite.pixels = [];
+    let frame: Frame = [];
     for (let h = 0; h < height; h++) {
-      let row: Pixel[] = [];
+      let row: Row = [];
       for (let w = 0; w < width; w++) {
         row.push(new Pixel());
       }
-      sprite.pixels.push(row);
+      frame.push(row);
     }
+    sprite.frames = [ frame ];
+    sprite.firstFrame = frame;
     sprite.save();
+
     return sprite;
   }
 
@@ -31,7 +38,10 @@ export default class Sprite {
       width: this.width,
       height: this.height,
       whiteAsEmpty: this.whiteAsEmpty,
-      pixels: this.pixels.map(row => row.map(pixel => pixel.color.toLowerCase()))
+      frames: this.frames.map((frame: Frame) =>
+        frame.map((row: Row) =>
+          row.map((pixel: Pixel) =>
+            pixel.color.toLowerCase())))
     });
   }
 
@@ -42,9 +52,8 @@ export default class Sprite {
     sprite.whiteAsEmpty = descriptor.whiteAsEmpty;
     sprite.height = descriptor.height;
     sprite.width = descriptor.width;
-    sprite.pixels = descriptor.pixels.map(
-      row => row.map(color => new Pixel(color))
-    );
+    sprite.frames = descriptor.frames.map(frame => frame.map(row => row.map(color => new Pixel(color))));
+    sprite.firstFrame = sprite.frames[0];
 
     return sprite;
   }
@@ -53,8 +62,8 @@ export default class Sprite {
     let whiteAsEmpty = this.whiteAsEmpty;
 
     return JSON.stringify(
-      this.pixels.map(row => row.map(pixel =>
-        whiteAsEmpty && pixel.color.toLowerCase() === "#ffffff" ? null : pixel.color)));
+      this.frames.map(frame => frame.map(row => row.map(pixel =>
+        whiteAsEmpty && pixel.color.toLowerCase() === "#ffffff" ? null : pixel.color))));
   }
 
   toggleWhiteAsEmpty() {

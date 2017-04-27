@@ -5,6 +5,7 @@ export default class PixelGrid extends Component {
   editable: boolean;
 
   didInsertElement() {
+    console.log(this.args.frame);
     this.editable = JSON.parse(this.args.editable || 'false');
 
     if (this.editable) {
