@@ -91,15 +91,15 @@ export default class Sprite {
 }
 
 function migrate0to1(json, name) {
-  // convert 2d array of colors to descriptor object containing array
-  // [ ["#ffffff", ...], ...] ->
+  // convert 2d array of colors to descriptor object containing array, also replaces null with white
+  // [ [null, ...], ...] ->
   // { "name": string, "width": number, "height": number, "whiteAsEmpty": boolean, pixels: [ ["#ffffff", ...], ...] }
   return {
     name,
     height: json.length,
     width: json[0].length,
     whiteAsEmpty: true,
-    pixels: json
+    pixels: json.map(row => row.map(val => !val ? "#ffffff" : val))
   };
 }
 
