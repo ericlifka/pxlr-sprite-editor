@@ -26,8 +26,12 @@ export default class Sprite {
     return JSON.stringify(json);
   }
 
-  toggleWhiteAsEmpty(): void {
+  toggleWhiteAsEmpty() {
     this.whiteAsEmpty = !this.whiteAsEmpty;
+  }
+
+  addEmptyFrame() {
+    this.frames = [ ...this.frames, createBlankFrame(this.width, this.height) ];
   }
 
   /**
@@ -92,7 +96,11 @@ export default class Sprite {
   }
 }
 
-function createBlankFrameList(width: number, height: number) {
+function createBlankFrameList(width: number, height: number): Frame[] {
+  return [ createBlankFrame(width, height) ];
+}
+
+function createBlankFrame(width: number, height: number): Frame {
   let frame: Frame = [];
   for (let h = 0; h < height; h++) {
     let row: Row = [];
@@ -101,8 +109,7 @@ function createBlankFrameList(width: number, height: number) {
     }
     frame.push(row);
   }
-
-  return [ frame ];
+  return frame;
 }
 
 function runMigrations(json: any, name: string) {

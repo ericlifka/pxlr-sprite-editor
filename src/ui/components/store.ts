@@ -59,7 +59,13 @@ export default class Store {
     this.regenerateBlob();
   }
 
-  parseLocalStorageSprites() {
+  addFrameToSprite() {
+    this.activeSprite.addEmptyFrame();
+    this.activeSprite.save();
+    this.regenerateBlob();
+  }
+
+  private parseLocalStorageSprites() {
     return JSON.parse(localStorage['savedSpritesList'] || "[]")
       .map(name => Sprite.load(name));
   }

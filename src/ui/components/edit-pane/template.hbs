@@ -11,18 +11,21 @@
     {{/each}}
   </div>
 
+  <div>
+    <button onclick={{action addFrame}}>New Frame</button>
+  </div>
+
   <div class="color-picker">
     Color: <input class="jscolor" value="ffffff" onchange={{action colorChange}}>
   </div>
 
-  {{#if store.spriteBlob}}
-    <label>Treat white pixels as empty
-      <input type="checkbox"
-             checked={{store.activeSprite.whiteAsEmpty}}
+  <label>Treat white pixels as empty
+    <input type="checkbox"
+           checked={{store.activeSprite.whiteAsEmpty}}
              onchange={{action onToggle}}>
-    </label>
-    <div class="sprite-blob">
-      {{store.spriteBlob}}
-    </div>
-  {{/if}}
+  </label>
+
+  <div class="sprite-blob">
+    {{store.spriteBlob}}
+  </div>
 </div>

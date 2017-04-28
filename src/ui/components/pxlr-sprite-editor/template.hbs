@@ -1,11 +1,14 @@
 <div class="pxlr-sprite-editor">
 
   {{#if store.editingSprite}}
-    <edit-pane />
-  {{else}}
-    <create-sprite-form />
 
+    <edit-pane />
+
+  {{else}}
+
+    <create-sprite-form />
     <saved-sprites-display />
+
   {{/if}}
 
 </div>

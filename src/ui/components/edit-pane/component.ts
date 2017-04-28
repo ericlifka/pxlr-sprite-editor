@@ -28,4 +28,8 @@ export default class EditPane extends Component {
   onToggle() {
     this.store.toggleWhiteAsEmpty();
   }
+
+  addFrame() {
+    this.store.addFrameToSprite();
+  }
 }
