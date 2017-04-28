@@ -7,7 +7,7 @@ export default class Store {
   @tracked editingSprite: boolean = false;
   @tracked activeSprite: Sprite;
   @tracked spriteBlob: string;
-  @tracked sprites: any[] = [];
+  @tracked sprites: Sprite[] = [];
 
   private constructor() {
     this.sprites = this.parseLocalStorageSprites();
@@ -22,12 +22,13 @@ export default class Store {
     return INSTANCE;
   }
 
-  createSprite(width, height, name = "untitled" + Date.now()) {
-    let sprite = Sprite.initializeEmptySprite(name, width, height);
+  createSprite(width: number, height: number, name: string = "untitled" + Date.now()) {
+    let sprite: Sprite = Sprite.initializeEmptySprite(name, width, height);
     this.sprites.push(sprite);
     this.activeSprite = sprite;
     this.editingSprite = true;
 
+    sprite.save();
     this.saveSpriteList();
     this.regenerateBlob();
   }
@@ -46,12 +47,16 @@ export default class Store {
 
   toggleWhiteAsEmpty() {
     this.activeSprite.toggleWhiteAsEmpty();
+
+    this.activeSprite.save();
     this.regenerateBlob();
   }
 
   changePixelColor(pixel, activeColor) {
     pixel.color = activeColor;
+
     this.activeSprite.save();
+    this.regenerateBlob();
   }
 
   parseLocalStorageSprites() {
@@ -60,7 +65,7 @@ export default class Store {
   }
 
   private saveSpriteList() {
-    localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map(sprite => sprite['name']));
+    localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map((sprite: Sprite) => sprite.name));
   }
 
   private regenerateBlob() {

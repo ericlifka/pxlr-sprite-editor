@@ -28,7 +28,6 @@ export default class Sprite {
 
   toggleWhiteAsEmpty(): void {
     this.whiteAsEmpty = !this.whiteAsEmpty;
-    this.save();
   }
 
   /**
@@ -88,7 +87,6 @@ export default class Sprite {
     sprite.height = height;
     sprite.frames = createBlankFrameList(width, height);
     sprite.firstFrame = sprite.frames[0];
-    sprite.save();
 
     return sprite;
   }
