@@ -21,6 +21,9 @@
 
   <div>
     <button onclick={{action addFrame}}>New Frame</button>
+    {{#if copiedFrame}}
+      <button onclick={{action pasteCopiedFrame}}>Paste Frame</button>
+    {{/if}}
   </div>
 
   <div class="color-picker">

@@ -34,7 +34,11 @@ export default class Sprite {
   }
 
   addEmptyFrame() {
-    this.frames = [ ...this.frames, createBlankFrame(this.width, this.height) ];
+    this.addFrame(createBlankFrame(this.width, this.height));
+  }
+
+  addFrame(frame: Frame) {
+    this.frames = [ ...this.frames, frame ];
     this.regenerateBlob();
   }
 

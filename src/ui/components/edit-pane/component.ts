@@ -7,13 +7,14 @@ export default class EditPane extends Component {
   @tracked store: Store = Store.getStore();
 
   @tracked activeColor: string;
+  @tracked copiedFrame: Frame;
 
   didInsertElement() {
     let jscolor = window['jscolor'];
     let root: HTMLElement = this.element as HTMLElement;
     let inputEle: HTMLInputElement = root.getElementsByClassName('jscolor')[0] as HTMLInputElement;
 
-    jscolor(inputEle);
+    jscolor.call(window, inputEle);
     this.activeColor = "#" + inputEle.value;
   }
 
@@ -34,7 +35,7 @@ export default class EditPane extends Component {
   }
 
   addFrame() {
-    this.store.addFrameToSprite(this.args.sprite);
+    this.store.addEmptyFrameToSprite(this.args.sprite);
   }
 
   moveFrame(frame: Frame, direction: string) {
@@ -42,6 +43,11 @@ export default class EditPane extends Component {
   }
 
   copyFrame(frame: Frame) {
+    this.copiedFrame = this.store.duplicateFrame(frame);
+  }
 
+  pasteCopiedFrame() {
+    this.store.addFrameToSprite(this.args.sprite, this.copiedFrame);
+    this.copiedFrame = null;
   }
 }

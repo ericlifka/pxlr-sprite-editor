@@ -41,8 +41,13 @@ export default class Store {
     sprite.save();
   }
 
-  addFrameToSprite(sprite: Sprite) {
+  addEmptyFrameToSprite(sprite: Sprite) {
     sprite.addEmptyFrame();
+    sprite.save();
+  }
+
+  addFrameToSprite(sprite: Sprite, frame: Frame) {
+    sprite.addFrame(frame);
     sprite.save();
   }
 
@@ -82,6 +87,12 @@ export default class Store {
     sprite.frames = [ ...front, right, left, ...back ];
     sprite.regenerateBlob();
     sprite.save();
+  }
+
+  duplicateFrame(frame: Frame) {
+    return frame.map((row: Pixel[]) =>
+      row.map((pixel: Pixel) =>
+        new Pixel(pixel.color)));
   }
 
   private parseLocalStorageSprites() {
