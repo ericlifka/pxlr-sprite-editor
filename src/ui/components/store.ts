@@ -92,6 +92,7 @@ export default class Store {
 
     }
 
+    sprite.frames = sprite.frames;
     sprite.save();
     this.regenerateBlob();
   }
