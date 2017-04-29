@@ -6,7 +6,10 @@ export default class CreateSpriteForm extends Component {
   @tracked name: string = "";
 
   didInsertElement() {
-    this.element.getElementsByClassName('focus-on-load')[0].focus();
+    let root: HTMLElement = this.element as HTMLElement;
+    let inputEle: HTMLInputElement = root.getElementsByClassName('focus-on-load')[0] as HTMLInputElement;
+
+    inputEle.focus();
   }
 
   updateName(event) {

@@ -9,8 +9,11 @@ export default class EditPane extends Component {
   @tracked activeColor: string;
 
   didInsertElement() {
-    let inputEle = this.element.getElementsByClassName('jscolor')[0];
-    window['jscolor'](inputEle);
+    let jscolor = window['jscolor'];
+    let root: HTMLElement = this.element as HTMLElement;
+    let inputEle: HTMLInputElement = root.getElementsByClassName('jscolor')[0] as HTMLInputElement;
+
+    jscolor(inputEle);
     this.activeColor = "#" + inputEle.value;
   }
 
@@ -36,5 +39,9 @@ export default class EditPane extends Component {
 
   moveFrame(frame: Frame, direction: string) {
     this.store.moveFrame(this.args.sprite, frame, direction);
+  }
+
+  copyFrame(frame: Frame) {
+
   }
 }

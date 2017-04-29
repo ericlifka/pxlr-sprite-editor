@@ -4,10 +4,12 @@
     <div class="row">
 
       {{#each row key="id" as |pixel|}}
-        <div class="pixel"
-             style="background-color: {{pixel.color}}"
-             onmousedown={{action onMouseDown pixel}}
-             onmouseover={{action onMouseOver pixel}}></div>
+        <div
+          class="pixel"
+          style="background-color: {{pixel.color}}"
+          onmousedown={{action onMouseDown pixel}}
+          onmouseover={{action onMouseOver pixel}}
+        ></div>
       {{/each}}
 
     </div>
