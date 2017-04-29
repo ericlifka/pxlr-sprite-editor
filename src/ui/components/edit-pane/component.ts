@@ -1,6 +1,7 @@
 import Component, {tracked} from "@glimmer/component";
 import Store from "../store";
 import Pixel from "../pixel";
+import {Frame} from "../sprite";
 
 export default class EditPane extends Component {
   @tracked store: Store = Store.getStore();
@@ -18,22 +19,22 @@ export default class EditPane extends Component {
   }
 
   selectPixel(pixel: Pixel) {
-    this.store.changePixelColor(pixel, this.activeColor);
+    this.store.changePixelColor(this.args.sprite, pixel, this.activeColor);
   }
 
   closeSprite() {
-    this.store.closeSprite();
+    this.args.closeSprite();
   }
 
   onToggle() {
-    this.store.toggleWhiteAsEmpty();
+    this.store.toggleWhiteAsEmpty(this.args.sprite);
   }
 
   addFrame() {
-    this.store.addFrameToSprite();
+    this.store.addFrameToSprite(this.args.sprite);
   }
 
-  moveFrame(direction, frame) {
-    this.store.moveFrame(direction, frame, this.store.activeSprite);
+  moveFrame(frame: Frame, direction: string) {
+    this.store.moveFrame(this.args.sprite, frame, direction);
   }
 }

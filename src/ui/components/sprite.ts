@@ -12,9 +12,11 @@ export default class Sprite {
   @tracked frames: Frame[];
   @tracked firstFrame: Frame;
 
+  @tracked spriteBlob: string;
+
   static CURRENT_SCHEMA_VERSION: number = 2;
 
-  getBlob(): string {
+  regenerateBlob() {
     let whiteAsEmpty = this.whiteAsEmpty;
     let json = this.toJSON();
 
@@ -23,15 +25,17 @@ export default class Sprite {
         color === "#ffffff" ? null : color)));
     }
 
-    return JSON.stringify(json);
+    this.spriteBlob = JSON.stringify(json);
   }
 
   toggleWhiteAsEmpty() {
     this.whiteAsEmpty = !this.whiteAsEmpty;
+    this.regenerateBlob();
   }
 
   addEmptyFrame() {
     this.frames = [ ...this.frames, createBlankFrame(this.width, this.height) ];
+    this.regenerateBlob();
   }
 
   /**
@@ -79,6 +83,8 @@ export default class Sprite {
     sprite.frames = descriptor.frames.map(frame => frame.map(row => row.map(color => new Pixel(color))));
     sprite.firstFrame = sprite.frames[0];
 
+    sprite.regenerateBlob();
+
     return sprite;
   }
 
@@ -91,6 +97,8 @@ export default class Sprite {
     sprite.height = height;
     sprite.frames = createBlankFrameList(width, height);
     sprite.firstFrame = sprite.frames[0];
+
+    sprite.regenerateBlob();
 
     return sprite;
   }

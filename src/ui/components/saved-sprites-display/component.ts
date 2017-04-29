@@ -1,10 +1,7 @@
-import Component, {tracked} from "@glimmer/component";
-import Store from "../store";
+import Component from "@glimmer/component";
 
 export default class SavedSpritesDisplay extends Component {
-  @tracked store: Store = Store.getStore();
-
   openSprite(sprite) {
-    this.store.openSprite(sprite);
+    this.args.openSprite(sprite);
   }
 }

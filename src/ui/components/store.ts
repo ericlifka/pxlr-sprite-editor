@@ -1,12 +1,10 @@
 import {tracked} from "@glimmer/component";
 import Sprite, {Frame} from "./sprite";
+import Pixel from "./pixel";
 
 let INSTANCE: Store = null;
 
 export default class Store {
-  @tracked editingSprite: boolean = false;
-  @tracked activeSprite: Sprite;
-  @tracked spriteBlob: string;
   @tracked sprites: Sprite[] = [];
 
   private constructor() {
@@ -25,48 +23,35 @@ export default class Store {
   createSprite(width: number, height: number, name: string = "untitled" + Date.now()) {
     let sprite: Sprite = Sprite.initializeEmptySprite(name, width, height);
     this.sprites.push(sprite);
-    this.activeSprite = sprite;
-    this.editingSprite = true;
 
     sprite.save();
     this.saveSpriteList();
-    this.regenerateBlob();
+
+    return sprite;
   }
 
-  openSprite(sprite) {
-    this.activeSprite = sprite;
-    this.editingSprite = true;
-    this.regenerateBlob();
+  toggleWhiteAsEmpty(sprite: Sprite) {
+    sprite.toggleWhiteAsEmpty();
+    sprite.save();
   }
 
-  closeSprite() {
-    this.editingSprite = false;
-    this.activeSprite = null;
-    this.spriteBlob = null;
-  }
-
-  toggleWhiteAsEmpty() {
-    this.activeSprite.toggleWhiteAsEmpty();
-
-    this.activeSprite.save();
-    this.regenerateBlob();
-  }
-
-  changePixelColor(pixel, activeColor) {
+  changePixelColor(sprite: Sprite, pixel: Pixel, activeColor: string) {
     pixel.color = activeColor;
-
-    this.activeSprite.save();
-    this.regenerateBlob();
+    sprite.regenerateBlob();
+    sprite.save();
   }
 
-  addFrameToSprite() {
-    this.activeSprite.addEmptyFrame();
-    this.activeSprite.save();
-    this.regenerateBlob();
+  addFrameToSprite(sprite: Sprite) {
+    sprite.addEmptyFrame();
+    sprite.save();
   }
 
-  moveFrame(direction: string, frame: Frame, sprite: Sprite) {
+  moveFrame(sprite: Sprite, frame: Frame, direction: string) {
     let index = sprite.frames.indexOf(frame);
+    let front: Frame[];
+    let left: Frame;
+    let right: Frame;
+    let back: Frame[];
 
     if (direction === "left") {
 
@@ -74,9 +59,10 @@ export default class Store {
         return;
       }
 
-      let left: Frame = sprite.frames[index - 1];
-      sprite.frames[index - 1] = frame;
-      sprite.frames[index] = left;
+      front = sprite.frames.slice(0, index - 1);
+      left = sprite.frames[index - 1];
+      right = sprite.frames[index];
+      back = sprite.frames.slice(index + 1);
 
     }
 
@@ -86,15 +72,16 @@ export default class Store {
         return;
       }
 
-      let right: Frame = sprite.frames[index + 1];
-      sprite.frames[index + 1] = frame;
-      sprite.frames[index] = right;
+      front = sprite.frames.slice(0, index);
+      left = sprite.frames[index];
+      right = sprite.frames[index + 1];
+      back = sprite.frames.slice(index + 2);
 
     }
 
-    sprite.frames = sprite.frames;
+    sprite.frames = [ ...front, right, left, ...back ];
+    sprite.regenerateBlob();
     sprite.save();
-    this.regenerateBlob();
   }
 
   private parseLocalStorageSprites() {
@@ -104,9 +91,5 @@ export default class Store {
 
   private saveSpriteList() {
     localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map((sprite: Sprite) => sprite.name));
-  }
-
-  private regenerateBlob() {
-    this.spriteBlob = this.activeSprite.getBlob();
   }
 }

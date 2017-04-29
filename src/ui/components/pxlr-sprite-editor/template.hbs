@@ -1,13 +1,22 @@
 <div class="pxlr-sprite-editor">
 
-  {{#if store.editingSprite}}
+  {{#if activeSprite}}
 
-    <edit-pane />
+    <edit-pane
+      @closeSprite={{action closeSprite}}
+      @sprite={{activeSprite}}
+    />
 
   {{else}}
 
-    <create-sprite-form />
-    <saved-sprites-display />
+    <create-sprite-form
+      @createSprite={{action createSprite}}
+    />
+
+    <saved-sprites-display
+      @sprites={{store.sprites}}
+      @openSprite={{action openSprite}}
+    />
 
   {{/if}}
 
