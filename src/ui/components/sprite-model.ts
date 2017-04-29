@@ -1,5 +1,5 @@
 import {tracked} from "@glimmer/component";
-import Pixel from "./pixel";
+import Pixel from "./pixel-model";
 
 export type Row = Pixel[];
 export type Frame = Row[];

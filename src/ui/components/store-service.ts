@@ -1,6 +1,6 @@
 import {tracked} from "@glimmer/component";
-import Sprite, {Frame} from "./sprite";
-import Pixel from "./pixel";
+import Sprite, {Frame} from "./sprite-model";
+import Pixel from "./pixel-model";
 
 let INSTANCE: Store = null;
 

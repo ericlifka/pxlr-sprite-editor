@@ -1,10 +1,9 @@
 import Component, {tracked} from "@glimmer/component";
-import Store from "../store";
-import Sprite from "../sprite";
+import Store from "../store-service";
+import Sprite from "../sprite-model";
 
 export default class PxlrSpriteEditor extends Component {
   @tracked store: Store = Store.getStore();
-
   @tracked activeSprite: Sprite;
 
   createSprite(width, height, name) {

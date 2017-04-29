@@ -1,7 +1,7 @@
 import Component, {tracked} from "@glimmer/component";
-import Store from "../store";
-import Pixel from "../pixel";
-import {Frame} from "../sprite";
+import Store from "../store-service";
+import Pixel from "../pixel-model";
+import {Frame} from "../sprite-model";
 
 export default class EditPane extends Component {
   @tracked store: Store = Store.getStore();
