@@ -42,6 +42,13 @@ export default class Sprite {
     this.regenerateBlob();
   }
 
+  removeFrame(frame: Frame) {
+    if (this.frames.indexOf(frame) > -1) {
+      this.frames = this.frames.filter(_f => _f !== frame);
+      this.regenerateBlob();
+    }
+  }
+
   /**
    * WARNING - WARNING - WARNING:
    *  The following four functions (save, toJSON, load, initializeEmptySprite) are responsible for moving data between

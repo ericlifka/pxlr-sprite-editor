@@ -6,7 +6,7 @@
     {{#each @sprite.frames key="@index" as |frame|}}
       <div class="frame">
         <button onclick={{action copyFrame frame}}>Copy</button>
-        <button>Remove</button>
+        <button onclick={{action removeFrame frame}}>Remove</button>
         <button onclick={{action moveFrame frame "left"}}>Left</button>
         <button onclick={{action moveFrame frame "right"}}>Right</button>
 

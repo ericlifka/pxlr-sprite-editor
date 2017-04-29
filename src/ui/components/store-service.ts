@@ -51,6 +51,11 @@ export default class Store {
     sprite.save();
   }
 
+  removeFrameFromSprite(sprite: Sprite, frame: Frame) {
+    sprite.removeFrame(frame);
+    sprite.save();
+  }
+
   moveFrame(sprite: Sprite, frame: Frame, direction: string) {
     let index = sprite.frames.indexOf(frame);
     let front: Frame[];

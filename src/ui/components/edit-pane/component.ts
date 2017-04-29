@@ -50,4 +50,9 @@ export default class EditPane extends Component {
     this.store.addFrameToSprite(this.args.sprite, this.copiedFrame);
     this.copiedFrame = null;
   }
+
+  removeFrame(frame: Frame) {
+    this.copyFrame(frame);
+    this.store.removeFrameFromSprite(this.args.sprite, frame);
+  }
 }
