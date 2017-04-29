@@ -1,5 +1,5 @@
 import {tracked} from "@glimmer/component";
-import Sprite from "./sprite";
+import Sprite, {Frame} from "./sprite";
 
 let INSTANCE: Store = null;
 
@@ -62,6 +62,37 @@ export default class Store {
   addFrameToSprite() {
     this.activeSprite.addEmptyFrame();
     this.activeSprite.save();
+    this.regenerateBlob();
+  }
+
+  moveFrame(direction: string, frame: Frame, sprite: Sprite) {
+    let index = sprite.frames.indexOf(frame);
+
+    if (direction === "left") {
+
+      if (index === -1 || index === 0) {
+        return;
+      }
+
+      let left: Frame = sprite.frames[index - 1];
+      sprite.frames[index - 1] = frame;
+      sprite.frames[index] = left;
+
+    }
+
+    if (direction === "right") {
+
+      if (index === -1 || index === sprite.frames.length - 1) {
+        return;
+      }
+
+      let right: Frame = sprite.frames[index + 1];
+      sprite.frames[index + 1] = frame;
+      sprite.frames[index] = right;
+
+    }
+
+    sprite.save();
     this.regenerateBlob();
   }
 

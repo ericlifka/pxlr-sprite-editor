@@ -2,12 +2,19 @@
   <button onclick={{action closeSprite}}>Close Sprite</button>
   <div>{{store.activeSprite.name}}</div>
 
-  <div>
+  <div class="animation-frames">
     {{#each store.activeSprite.frames key="@index" as |frame|}}
-      <pixel-grid
-        @editable=true
-        @frame={{frame}}
-        @selectPixel={{action selectPixel}} />
+      <div class="frame">
+        <button>Copy</button>
+        <button>Remove</button>
+        <button onclick={{action moveFrame "left" frame}}>Left</button>
+        <button onclick={{action moveFrame "right" frame}}>Right</button>
+
+        <pixel-grid
+          @editable=true
+          @frame={{frame}}
+          @selectPixel={{action selectPixel}} />
+      </div>
     {{/each}}
   </div>
 
@@ -22,7 +29,7 @@
   <label>Treat white pixels as empty
     <input type="checkbox"
            checked={{store.activeSprite.whiteAsEmpty}}
-             onchange={{action onToggle}}>
+           onchange={{action onToggle}} />
   </label>
 
   <div class="sprite-blob">

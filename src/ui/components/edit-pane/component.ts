@@ -32,4 +32,8 @@ export default class EditPane extends Component {
   addFrame() {
     this.store.addFrameToSprite();
   }
+
+  moveFrame(direction, frame) {
+    this.store.moveFrame(direction, frame, this.store.activeSprite);
+  }
 }

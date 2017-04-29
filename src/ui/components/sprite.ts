@@ -1,8 +1,8 @@
 import {tracked} from "@glimmer/component";
 import Pixel from "./pixel";
 
-type Row = Pixel[];
-type Frame = Row[];
+export type Row = Pixel[];
+export type Frame = Row[];
 
 export default class Sprite {
   @tracked name: string;
