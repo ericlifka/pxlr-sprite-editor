@@ -1,6 +1,7 @@
 import {tracked} from "@glimmer/component";
-import Sprite, {Frame} from "./sprite-model";
+import Sprite, {Frame, Row} from "./sprite-model";
 import Pixel from "./pixel-model";
+import guid from "./guid-helper";
 
 let INSTANCE: Store = null;
 
@@ -95,9 +96,13 @@ export default class Store {
   }
 
   duplicateFrame(frame: Frame) {
-    return frame.map((row: Pixel[]) =>
-      row.map((pixel: Pixel) =>
-        new Pixel(pixel.color)));
+    let newFrame: Frame =
+      frame.map((row: Row) =>
+        row.map((pixel: Pixel) =>
+          new Pixel(pixel.color)));
+    newFrame['id'] = guid();
+
+    return newFrame;
   }
 
   private parseLocalStorageSprites() {

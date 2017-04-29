@@ -1,5 +1,6 @@
 import {tracked} from "@glimmer/component";
 import Pixel from "./pixel-model";
+import guid from "./guid-helper";
 
 export type Row = Pixel[];
 export type Frame = Row[];
@@ -91,7 +92,7 @@ export default class Sprite {
     sprite.whiteAsEmpty = descriptor.whiteAsEmpty;
     sprite.width = descriptor.width;
     sprite.height = descriptor.height;
-    sprite.frames = descriptor.frames.map(frame => frame.map(row => row.map(color => new Pixel(color))));
+    sprite.frames = processFrameData(descriptor.frames);
     sprite.firstFrame = sprite.frames[0];
 
     sprite.regenerateBlob();
@@ -113,6 +114,14 @@ export default class Sprite {
 
     return sprite;
   }
+}
+
+function processFrameData(frames) {
+  return frames.map(frame => {
+    let _frame = frame.map(row => row.map(color => new Pixel(color)));
+    _frame['id'] = guid();
+    return _frame;
+  });
 }
 
 function createBlankFrameList(width: number, height: number): Frame[] {

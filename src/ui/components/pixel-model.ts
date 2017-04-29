@@ -1,7 +1,8 @@
 import {tracked} from "@glimmer/component";
+import guid from "./guid-helper";
 
 export default class Pixel {
-  id: number = Date.now();
+  id: string = guid();
   @tracked color: string;
 
   constructor(color: string = "#ffffff") {

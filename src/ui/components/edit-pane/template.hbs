@@ -3,7 +3,7 @@
   <div>{{@sprite.name}}</div>
 
   <div class="animation-frames">
-    {{#each @sprite.frames key="@index" as |frame|}}
+    {{#each @sprite.frames key="id" as |frame|}}
       <div class="frame">
         <button onclick={{action copyFrame frame}}>Copy</button>
         <button onclick={{action removeFrame frame}}>Remove</button>
