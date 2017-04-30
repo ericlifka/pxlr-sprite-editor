@@ -36,7 +36,7 @@
 
   &.show-animation {
     .frame.hidden {
-      visibility: hidden;
+      display: none;
     }
   }
 }

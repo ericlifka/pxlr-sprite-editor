@@ -11,7 +11,7 @@ export default class EditPane extends Component {
   @tracked displaySize: string = "medium";
   @tracked animationClass: string = "";
 
-  animationId: number;
+  breakAnimation: boolean = false;
 
   didInsertElement() {
     let jscolor = window['jscolor'];
@@ -68,6 +68,7 @@ export default class EditPane extends Component {
   }
 
   showAnimation() {
+    this.breakAnimation = false;
     this.animationClass = "show-animation";
 
     let root: HTMLElement = this.element as HTMLElement;
@@ -94,7 +95,7 @@ export default class EditPane extends Component {
       }
     }
 
-    function frameHandler(time) {
+    const frameHandler = (time) => {
       if (!start) {
         start = time;
       }
@@ -106,18 +107,19 @@ export default class EditPane extends Component {
         updateCounter();
       }
 
-      this.animationId = requestAnimationFrame(frameHandler);
-    }
-    this.animationId = requestAnimationFrame(frameHandler);
+      if (this.breakAnimation){
+        this.animationClass = "";
+        for (let i = 0; i < boundary; i++) {
+          frames[i].classList.remove('hidden');
+        }
+      } else {
+        requestAnimationFrame(frameHandler);
+      }
+    };
+    requestAnimationFrame(frameHandler);
   }
 
   hideAnimation() {
-    cancelAnimationFrame(this.animationId);
-    this.animationClass = "";
-    let root: HTMLElement = this.element as HTMLElement;
-    let frames = root.getElementsByClassName('frame');
-    for (let i = 0; i < frames.length; i++) {
-      frames[i].classList.remove('hidden');
-    }
+    this.breakAnimation = true;
   }
 }
