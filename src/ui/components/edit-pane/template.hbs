@@ -1,4 +1,4 @@
-<div class="edit-pane">
+<div class="edit-pane {{animationClass}}">
   <button onclick={{action closeSprite}}>Close Sprite</button>
   <div>{{@sprite.name}}</div>
 
@@ -43,6 +43,11 @@
       onchange={{action onToggle}}
     />
   </label>
+  {{#if animationClass}}
+    <button onclick={{action hideAnimation}}>Stop Animation</button>
+  {{else}}
+    <button onclick={{action showAnimation}}>Animate</button>
+  {{/if}}
 
   <div class="sprite-blob">
     {{@sprite.spriteBlob}}

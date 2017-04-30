@@ -33,6 +33,12 @@
     word-wrap: break-word;
     max-width: 400px;
   }
+
+  &.show-animation {
+    .frame.hidden {
+      visibility: hidden;
+    }
+  }
 }
 
 .pixel-grid {
