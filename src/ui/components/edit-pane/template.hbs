@@ -7,8 +7,10 @@
       <div class="frame">
         <div class="controls">
           <button onclick={{action moveFrame frame "left"}}><i class="ion-arrow-left-b"></i></button>
-          <button onclick={{action copyFrame frame}}>Copy</button>
-          <button onclick={{action removeFrame frame}}>Remove</button>
+          <div class="spacer"></div>
+          <button onclick={{action copyFrame frame}}><i class="ion-ios-copy"></i></button>
+          <button onclick={{action removeFrame frame}}><i class="ion-ios-trash"></i></button>
+          <div class="spacer"></div>
           <button onclick={{action moveFrame frame "right"}}><i class="ion-arrow-right-b"></i></button>
         </div>
 

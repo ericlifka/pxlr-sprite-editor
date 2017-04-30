@@ -9,13 +9,47 @@
     flex-wrap: wrap;
 
     .frame {
-      margin-right: 20px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+
       display: flex;
       flex-direction: column;
+      border: 3px solid #666;
+      align-items: center;
 
       .controls {
         display: flex;
         flex-direction: row;
+        border-bottom: 3px solid #666;
+        width: 100%;
+
+        button {
+          flex-grow: 0;
+          margin: 0;
+          padding: 0;
+          border: 0px solid;
+          border-left: 1px solid #666;
+          background-color: white;
+          width: 30px;
+          height: 20px;
+          cursor: pointer;
+          color: #666;
+          font-size: 18px;
+
+          &:first-child {
+            border-left: none;
+          }
+          &:hover {
+            background-color: #ccc;
+            color: #333;
+          }
+        }
+
+
+        .spacer {
+          flex-grow: 1;
+          border-left: 1px solid #666;
+        }
       }
     }
   }
