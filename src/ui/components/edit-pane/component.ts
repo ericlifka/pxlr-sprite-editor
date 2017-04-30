@@ -86,9 +86,7 @@ export default class EditPane extends Component {
           frames[i].classList.add('hidden');
         }
       }
-    }
 
-    function updateCounter() {
       activeFrame++;
       if (activeFrame >= boundary) {
         activeFrame = 0;
@@ -104,7 +102,6 @@ export default class EditPane extends Component {
         start = time;
 
         updateClasses();
-        updateCounter();
       }
 
       if (this.breakAnimation){
