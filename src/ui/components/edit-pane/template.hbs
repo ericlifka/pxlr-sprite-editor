@@ -21,13 +21,13 @@
         />
       </div>
     {{/each}}
-  </div>
 
-  <div>
-    <button onclick={{action addFrame}}>New Frame</button>
-    {{#if copiedFrame}}
-      <button onclick={{action pasteCopiedFrame}}>Paste Frame</button>
-    {{/if}}
+    <div class="new-frame-buttons">
+      <button title="new frame" onclick={{action addFrame}}><i class="ion-ios-plus-outline"></i></button>
+      {{#if copiedFrame}}
+        <button title="paste copied frame" onclick={{action pasteCopiedFrame}}><i class="ion-ios-plus"></i></button>
+      {{/if}}
+    </div>
   </div>
 
   <div class="color-picker">
