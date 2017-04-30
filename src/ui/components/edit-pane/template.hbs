@@ -5,10 +5,12 @@
   <div class="animation-frames {{displaySize}}">
     {{#each @sprite.frames key="id" as |frame|}}
       <div class="frame">
-        <button onclick={{action copyFrame frame}}>Copy</button>
-        <button onclick={{action removeFrame frame}}>Remove</button>
-        <button onclick={{action moveFrame frame "left"}}>Left</button>
-        <button onclick={{action moveFrame frame "right"}}>Right</button>
+        <div class="controls">
+          <button onclick={{action copyFrame frame}}>Copy</button>
+          <button onclick={{action removeFrame frame}}>Remove</button>
+          <button onclick={{action moveFrame frame "left"}}>Left</button>
+          <button onclick={{action moveFrame frame "right"}}>Right</button>
+        </div>
 
         <pixel-grid
           @editable=true

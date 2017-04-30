@@ -1,0 +1,31 @@
+.edit-pane {
+  .color-picker {
+    margin-top: 20px;
+  }
+
+  .animation-frames {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .frame {
+      margin-right: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .sprite-blob {
+    font-family: monospace;
+    font-size: 10px;
+    color: #666;
+    word-wrap: break-word;
+    max-width: 400px;
+  }
+
+  &.show-animation {
+    .frame.hidden {
+      display: none;
+    }
+  }
+}

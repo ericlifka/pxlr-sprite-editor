@@ -1,111 +1,12 @@
+@import "saved-sprites-display";
+@import "create-sprite-form";
+@import "pixel-grid";
+@import "edit-pane";
+
 .pxlr-prite-editor {
 
 }
 
-.create-sprite-form {
-  input {
-    width: 40px;
-    margin-right: 20px;
-  }
-}
 
-.edit-pane {
-  .color-picker {
-    margin-top: 20px;
-  }
 
-  .animation-frames {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
 
-    .frame {
-      margin-right: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-  }
-
-  .sprite-blob {
-    font-family: monospace;
-    font-size: 10px;
-    color: #666;
-    word-wrap: break-word;
-    max-width: 400px;
-  }
-
-  &.show-animation {
-    .frame.hidden {
-      display: none;
-    }
-  }
-}
-
-.pixel-grid {
-  display: inline-block;
-  box-shadow: 0px 0px 15px 2px #666;
-  margin: 10px 0;
-
-  .row {
-    display: flex;
-    flex-direction: row;
-  }
-}
-.animation-frames.small {
-  .pixel {
-    width: 10px;
-    height: 10px;
-    &:hover {
-      width: 8px;
-      height: 8px;
-    }
-  }
-}
-.animation-frames.medium {
-  .pixel {
-    width: 15px;
-    height: 15px;
-    &:hover {
-      width: 13px;
-      height: 13px;
-    }
-  }
-}
-.animation-frames.large {
-  .pixel {
-    width: 20px;
-    height: 20px;
-    &:hover {
-      width: 18px;
-      height: 18px;
-    }
-  }
-}
-.pixel:hover {
-  border: 1px solid #666;
-}
-
-.saved-sprites-display {
-  display: flex;
-  flex-direction: row;
-
-  .sprite-selector {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    label {
-      cursor: pointer;
-    }
-
-    .pixel-grid .row .pixel {
-      width: 3px;
-      height: 3px;
-
-      &:hover {
-        border: none;
-        width: 3px;
-        height: 3px;
-      }
-    }
-  }
-}
