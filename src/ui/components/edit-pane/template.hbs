@@ -2,7 +2,7 @@
   <button onclick={{action closeSprite}}>Close Sprite</button>
   <div>{{@sprite.name}}</div>
 
-  <div class="animation-frames">
+  <div class="animation-frames {{displaySize}}">
     {{#each @sprite.frames key="id" as |frame|}}
       <div class="frame">
         <button onclick={{action copyFrame frame}}>Copy</button>
@@ -29,6 +29,12 @@
   <div class="color-picker">
     Color: <input class="jscolor" value="ffffff" onchange={{action colorChange}}>
   </div>
+
+  <select onchange={{action selectChange}}>
+    <option value="small">small</option>
+    <option value="medium" selected>medium</option>
+    <option value="large">large</option>
+  </select>
 
   <label>Treat white pixels as empty
     <input

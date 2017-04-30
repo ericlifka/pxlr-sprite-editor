@@ -8,6 +8,7 @@ export default class EditPane extends Component {
 
   @tracked activeColor: string;
   @tracked copiedFrame: Frame;
+  @tracked displaySize: string = "medium";
 
   didInsertElement() {
     let jscolor = window['jscolor'];
@@ -32,6 +33,13 @@ export default class EditPane extends Component {
 
   onToggle() {
     this.store.toggleWhiteAsEmpty(this.args.sprite);
+  }
+
+  selectChange(event) {
+    let index = event.target.selectedIndex;
+    let value = event.target.options[index].value;
+
+    this.displaySize = value || "medium";
   }
 
   addFrame() {

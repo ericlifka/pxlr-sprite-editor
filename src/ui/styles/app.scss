@@ -17,6 +17,7 @@
   .animation-frames {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
     .frame {
       margin-right: 20px;
@@ -42,18 +43,40 @@
   .row {
     display: flex;
     flex-direction: row;
-
-    .pixel {
-      width: 20px;
-      height: 20px;
+  }
+}
+.animation-frames.small {
+  .pixel {
+    width: 10px;
+    height: 10px;
+    &:hover {
+      width: 8px;
+      height: 8px;
     }
-
-    .pixel:hover {
-      border: 1px solid #666;
+  }
+}
+.animation-frames.medium {
+  .pixel {
+    width: 15px;
+    height: 15px;
+    &:hover {
+      width: 13px;
+      height: 13px;
+    }
+  }
+}
+.animation-frames.large {
+  .pixel {
+    width: 20px;
+    height: 20px;
+    &:hover {
       width: 18px;
       height: 18px;
     }
   }
+}
+.pixel:hover {
+  border: 1px solid #666;
 }
 
 .saved-sprites-display {
