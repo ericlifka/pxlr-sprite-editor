@@ -71,6 +71,18 @@
   </div>
 
   <div class="sprite-blob">
-    {{@sprite.spriteBlob}}
+    <button class="copy-button"
+            title="copy to clipboard"
+            onclick={{action copySpriteBlob}}>
+      {{#if copySuccess}}
+        <i class="ion-android-checkmark-circle success"></i>
+      {{else}}
+        <i class="ion-ios-download-outline"></i>
+      {{/if}}
+    </button>
+    <textarea
+      readonly
+      value={{@sprite.spriteBlob}}
+    />
   </div>
 </div>

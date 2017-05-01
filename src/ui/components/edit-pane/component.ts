@@ -10,6 +10,7 @@ export default class EditPane extends Component {
   @tracked copiedFrame: Frame;
   @tracked displaySize: string = "medium";
   @tracked animationClass: string = "";
+  @tracked copySuccess: boolean = false;
 
   breakAnimation: boolean = false;
 
@@ -119,5 +120,21 @@ export default class EditPane extends Component {
 
   hideAnimation() {
     this.breakAnimation = true;
+  }
+
+  copySpriteBlob() {
+    let root: HTMLElement = this.element as HTMLElement;
+    let textarea = root.getElementsByTagName('textarea')[0];
+
+    textarea.select();
+    let res = document.execCommand('copy');
+    textarea.selectionEnd = 0;
+
+    if (res) {
+      this.copySuccess = true;
+      setTimeout(() => {
+        this.copySuccess = false;
+      }, 500);
+    }
   }
 }
