@@ -14,6 +14,7 @@ export default class Sprite {
   @tracked firstFrame: Frame;
 
   @tracked spriteBlob: string;
+  @tracked canSave: boolean;
 
   static CURRENT_SCHEMA_VERSION: number = 2;
 
@@ -39,21 +40,27 @@ export default class Sprite {
   }
 
   addFrame(frame: Frame) {
+    this.canSave = false;
     let newFrames = [ ...this.frames, frame ];
     this.frames = [];
     requestAnimationFrame(() => {
       this.frames = newFrames;
       this.regenerateBlob();
+      this.canSave = true;
+      this.save();
     });
   }
 
   removeFrame(frame: Frame) {
     if (this.frames.indexOf(frame) > -1) {
+      this.canSave = false;
       let newFrames = this.frames.filter(_f => _f !== frame);
       this.frames = [];
       requestAnimationFrame(() => {
         this.frames = newFrames;
         this.regenerateBlob();
+        this.canSave = true;
+        this.save();
       });
     }
   }
@@ -73,7 +80,9 @@ export default class Sprite {
    *    4) Add the migration to the migration list in `runMigrations` below
    */
   save(): void {
-    localStorage[this.name] = JSON.stringify(this.toJSON());
+    if (this.canSave) {
+      localStorage[this.name] = JSON.stringify(this.toJSON());
+    }
   }
 
   private toJSON(): object {
