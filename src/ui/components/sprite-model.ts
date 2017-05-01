@@ -47,7 +47,6 @@ export default class Sprite {
       this.frames = newFrames;
       this.regenerateBlob();
       this.canSave = true;
-      this.save();
     });
   }
 
@@ -60,7 +59,6 @@ export default class Sprite {
         this.frames = newFrames;
         this.regenerateBlob();
         this.canSave = true;
-        this.save();
       });
     }
   }
@@ -82,6 +80,8 @@ export default class Sprite {
   save(): void {
     if (this.canSave) {
       localStorage[this.name] = JSON.stringify(this.toJSON());
+    } else {
+      requestAnimationFrame(() => this.save());
     }
   }
 
