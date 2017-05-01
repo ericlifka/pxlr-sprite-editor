@@ -1,6 +1,50 @@
 .edit-pane {
-  .color-picker {
-    margin-top: 20px;
+  padding-top: 60px;
+
+  .control-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px 0 #999;
+    height: 50px;
+    color: #666;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    padding-right: 15px;
+
+    .name {
+      font-size: 24px;
+      margin-left: 15px;
+    }
+
+    .color-picker .jscolor {
+      width: 60px;
+      padding: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .animation-button,
+    .close-button {
+      font-size: 32px;
+      border: none;
+      background-color: white;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .close-button {
+      margin-right: 15px;
+    }
+
+    .white-empty-picker,
+    .size-picker {
+      cursor: pointer;
+    }
   }
 
   .animation-frames {
@@ -35,7 +79,7 @@
       border: 3px solid #666;
       align-items: center;
 
-      .controls {
+      .frame-control-buttons {
         display: flex;
         flex-direction: row;
         border-bottom: 3px solid #666;
@@ -83,7 +127,7 @@
     .frame.hidden {
       display: none;
     }
-    .frame .controls {
+    .frame .frame-control-buttons {
       display: none;
     }
   }

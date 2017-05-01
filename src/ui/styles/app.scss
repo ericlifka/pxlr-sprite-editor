@@ -3,6 +3,12 @@
 @import "pixel-grid";
 @import "edit-pane";
 
+body {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 .pxlr-prite-editor {
 
 }

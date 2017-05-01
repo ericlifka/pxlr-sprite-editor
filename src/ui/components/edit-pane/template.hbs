@@ -1,11 +1,51 @@
 <div class="edit-pane {{animationClass}}">
-  <button onclick={{action closeSprite}}>Close Sprite</button>
-  <div>{{@sprite.name}}</div>
+  <div class="control-panel">
+    <div class="name">{{@sprite.name}}</div>
+
+    <select class="size-picker" onchange={{action selectChange}}>
+      <option value="small">small</option>
+      <option value="medium" selected>medium</option>
+      <option value="large">large</option>
+    </select>
+
+    <label class="white-empty-picker">
+      White is empty
+      <input
+        type="checkbox"
+        checked={{@sprite.whiteAsEmpty}}
+          onchange={{action onToggle}}
+      />
+    </label>
+
+    <div class="color-picker">
+      <input class="jscolor" value="ffffff" onchange={{action colorChange}}>
+    </div>
+
+    {{#if animationClass}}
+      <button class="animation-button"
+              title="Stop Animation"
+              onclick={{action hideAnimation}}>
+        <i class="ion-stop"></i>
+      </button>
+    {{else}}
+      <button class="animation-button"
+              title="Start Animation"
+              onclick={{action showAnimation}}>
+        <i class="ion-play"></i>
+      </button>
+    {{/if}}
+
+    <button class="close-button"
+            title="Close Sprite"
+            onclick={{action closeSprite}}>
+      <i class="ion-close-round"></i>
+    </button>
+  </div>
 
   <div class="animation-frames {{displaySize}}">
     {{#each @sprite.frames key="id" as |frame|}}
       <div class="frame">
-        <div class="controls">
+        <div class="frame-control-buttons">
           <button onclick={{action moveFrame frame "left"}}><i class="ion-arrow-left-b"></i></button>
           <div class="spacer"></div>
           <button onclick={{action copyFrame frame}}><i class="ion-ios-copy"></i></button>
@@ -29,29 +69,6 @@
       {{/if}}
     </div>
   </div>
-
-  <div class="color-picker">
-    Color: <input class="jscolor" value="ffffff" onchange={{action colorChange}}>
-  </div>
-
-  <select onchange={{action selectChange}}>
-    <option value="small">small</option>
-    <option value="medium" selected>medium</option>
-    <option value="large">large</option>
-  </select>
-
-  <label>Treat white pixels as empty
-    <input
-      type="checkbox"
-      checked={{@sprite.whiteAsEmpty}}
-      onchange={{action onToggle}}
-    />
-  </label>
-  {{#if animationClass}}
-    <button onclick={{action hideAnimation}}>Stop Animation</button>
-  {{else}}
-    <button onclick={{action showAnimation}}>Animate</button>
-  {{/if}}
 
   <div class="sprite-blob">
     {{@sprite.spriteBlob}}

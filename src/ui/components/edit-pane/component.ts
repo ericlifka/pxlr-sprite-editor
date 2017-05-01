@@ -16,7 +16,8 @@ export default class EditPane extends Component {
   didInsertElement() {
     let jscolor = window['jscolor'];
     let root: HTMLElement = this.element as HTMLElement;
-    let inputEle: HTMLInputElement = root.getElementsByClassName('jscolor')[0] as HTMLInputElement;
+    let inputEle: HTMLInputElement =
+      root.getElementsByClassName('jscolor')[0] as HTMLInputElement;
 
     jscolor.call(window, inputEle);
     this.activeColor = "#" + inputEle.value;
