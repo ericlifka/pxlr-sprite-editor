@@ -39,14 +39,22 @@ export default class Sprite {
   }
 
   addFrame(frame: Frame) {
-    this.frames = [ ...this.frames, frame ];
-    this.regenerateBlob();
+    let newFrames = [ ...this.frames, frame ];
+    this.frames = [];
+    requestAnimationFrame(() => {
+      this.frames = newFrames;
+      this.regenerateBlob();
+    });
   }
 
   removeFrame(frame: Frame) {
     if (this.frames.indexOf(frame) > -1) {
-      this.frames = this.frames.filter(_f => _f !== frame);
-      this.regenerateBlob();
+      let newFrames = this.frames.filter(_f => _f !== frame);
+      this.frames = [];
+      requestAnimationFrame(() => {
+        this.frames = newFrames;
+        this.regenerateBlob();
+      });
     }
   }
 
