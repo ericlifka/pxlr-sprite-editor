@@ -1,14 +1,30 @@
 <div class="saved-sprites-display">
-  {{#each @sprites key="name" as |sprite|}}
+  {{#if @sprites.length}}
+    <div class="title">Open a project</div>
 
-    <button class="sprite-selector" onclick={{action openSprite sprite}}>
-      <label>{{sprite.name}}</label>
+    <div class="sprites">
+      {{#each @sprites key="name" as |sprite|}}
 
-      <pixel-grid
-        @editable="false"
-        @frame={{sprite.firstFrame}}
-      />
-    </button>
+        <div class="sprite-entry">
+          <div class="controls">
+            <button class="open" onclick={{action openSprite sprite}}>
+              {{sprite.name}}
+            </button>
 
-  {{/each}}
+            <button class="delete">
+              delete
+            </button>
+          </div>
+
+          <div class="preview">
+            <pixel-grid
+              @editable="false"
+              @frame={{sprite.firstFrame}}
+            />
+          </div>
+        </div>
+
+      {{/each}}
+    </div>
+  {{/if}}
 </div>

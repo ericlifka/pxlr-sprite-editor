@@ -10,12 +10,18 @@ body {
   border: none;
   margin: 0;
   padding: 0;
+
+  color: $font-color;
+  font-size: 18px;
+  font-family: "Courier New", monospace;
+}
+.title {
+  border-bottom: 3px solid $border-color;
+  display: inline;
+  margin-bottom: 10px;
+  font-weight: 800;
 }
 
 .pxlr-prite-editor {
 
 }
-
-
-
-
