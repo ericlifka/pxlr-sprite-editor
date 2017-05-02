@@ -36,14 +36,14 @@
 
       input {
         font-size: 18px;
-        color: $font-color;
+        color: $teal-dark;
         flex-grow: 1;
         border: none;
         outline: none;
-        border-bottom: 2px solid $border-color;
+        border-bottom: 2px solid $teal-medium;
 
         &:focus {
-          border-bottom-color: $font-color;
+          border-bottom-color: $teal-dark;
         }
       }
     }
@@ -56,13 +56,13 @@
 
     button {
       font-size: 60px;
-      color: $border-color;
+      color: $teal-medium;
       border: none;
       background-color: rgba(0, 0, 0, 0);
       cursor: pointer;
 
       &:hover {
-        color: $font-color;
+        color: $teal-dark;
       }
     }
   }

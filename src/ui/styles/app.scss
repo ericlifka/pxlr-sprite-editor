@@ -1,5 +1,6 @@
-$border-color: #719997;
-$font-color: #456361;
+$teal-light: #99b6b1;
+$teal-medium: #719997;
+$teal-dark: #456361;
 
 @import "create-sprite-form";
 @import "edit-pane";
@@ -12,12 +13,12 @@ body {
   margin: 0;
   padding: 0;
 
-  color: $font-color;
+  color: $teal-dark;
   font-size: 18px;
   font-family: "Courier New", monospace;
 }
 .title {
-  border-bottom: 3px solid $border-color;
+  border-bottom: 3px solid $teal-medium;
   display: inline;
   margin-bottom: 10px;
   font-weight: 800;

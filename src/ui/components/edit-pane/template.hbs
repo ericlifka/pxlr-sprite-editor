@@ -46,12 +46,10 @@
     {{#each @sprite.frames key="id" as |frame|}}
       <div class="frame">
         <div class="frame-control-buttons">
-          <button onclick={{action moveFrame frame "left"}}><i class="ion-arrow-left-b"></i></button>
-          <div class="spacer"></div>
-          <button onclick={{action copyFrame frame}}><i class="ion-ios-copy"></i></button>
-          <button onclick={{action removeFrame frame}}><i class="ion-ios-trash"></i></button>
-          <div class="spacer"></div>
-          <button onclick={{action moveFrame frame "right"}}><i class="ion-arrow-right-b"></i></button>
+          <button title="move left" onclick={{action moveFrame frame "left"}}><i class="ion-arrow-left-b"></i></button>
+          <button title="copy frame" onclick={{action copyFrame frame}}><i class="ion-ios-copy"></i></button>
+          <button title="delete frame" onclick={{action removeFrame frame}}><i class="ion-ios-trash"></i></button>
+          <button title="move right" onclick={{action moveFrame frame "right"}}><i class="ion-arrow-right-b"></i></button>
         </div>
 
         <pixel-grid

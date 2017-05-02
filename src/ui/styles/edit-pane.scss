@@ -1,5 +1,5 @@
 .edit-pane {
-  padding-top: 60px;
+  padding-top: 80px;
 
   .control-panel {
     width: 100%;
@@ -8,9 +8,8 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
-    box-shadow: 0 0 10px 0 #999;
+    box-shadow: 0 0 10px 0 $teal-dark;
     height: 50px;
-    color: #666;
     position: fixed;
     top: 0;
     background-color: white;
@@ -33,8 +32,11 @@
       font-size: 32px;
       border: none;
       background-color: white;
-      color: #666;
       cursor: pointer;
+      color: $teal-medium;
+      &:hover {
+        color: $teal-dark;
+      }
     }
 
     .close-button {
@@ -63,10 +65,10 @@
         background-color: white;
         font-size: 66px;
         cursor: pointer;
-        color: #999;
+        color: $teal-medium;
 
         &:hover {
-          color: #333;
+          color: $teal-dark;
         }
       }
     }
@@ -77,41 +79,42 @@
 
       display: flex;
       flex-direction: column;
-      border: 3px solid #666;
+      border: 3px solid $teal-medium;
       align-items: center;
       background-color: #f0f0f0;
 
       .frame-control-buttons {
         display: flex;
         flex-direction: row;
-        border-bottom: 3px solid #666;
+        border-bottom: 3px solid $teal-medium;
         width: 100%;
 
         button {
-          flex-grow: 0;
+          flex-grow: 1;
           margin: 0;
           padding: 0;
           border: 0px solid;
-          border-left: 1px solid #666;
+          border-left: 1px solid $teal-medium;
           background-color: rgba(0,0,0,0);
           width: 30px;
           height: 20px;
           cursor: pointer;
-          color: #666;
+          color: $teal-dark;
           font-size: 18px;
 
           &:first-child {
             border-left: none;
           }
           &:hover {
-            background-color: #ccc;
-            color: #333;
+            background-color: white;
+            color: $teal-medium;
           }
         }
 
         .spacer {
           flex-grow: 1;
-          border-left: 1px solid #666;
+          border-left: 1px solid $teal-medium;
+          margin-right: -1px;
         }
       }
     }
@@ -128,23 +131,24 @@
       border: none;
       background-color: white;
       cursor: pointer;
-      color: #999;
+      color: $teal-medium;
       width: 50px;
 
       &:hover {
-        color: #333;
+        color: $teal-dark;
       }
 
       .success {
-        color: #4dff52;
+        color: #3cbd40;
       }
     }
 
     textarea {
       font-family: monospace;
       font-size: 10px;
-      color: #666;
+      color: $teal-dark;
       word-wrap: break-word;
+      border-color: $teal-medium;
 
       width: 100%;
       height: 150px;
