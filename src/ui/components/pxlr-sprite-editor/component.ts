@@ -14,6 +14,10 @@ export default class PxlrSpriteEditor extends Component {
     this.activeSprite = sprite;
   }
 
+  deleteSprite(sprite: Sprite) {
+    this.store.deleteSprite(sprite);
+  }
+
   closeSprite() {
     this.activeSprite = null;
   }

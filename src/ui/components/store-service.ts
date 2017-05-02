@@ -113,4 +113,8 @@ export default class Store {
   private saveSpriteList() {
     localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map((sprite: Sprite) => sprite.name));
   }
+
+  deleteSprite(sprite: Sprite) {
+    console.log('delete', sprite.name);
+  }
 }

@@ -10,15 +10,17 @@
 
   .sprite-entry {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border: 1px solid $border-color;
     margin: 0 5px 5px 0;
-    padding: 10px;
+    padding: 5px;
 
     .controls {
       display: flex;
-      flex-direction: column;
-      justify-content: space-around;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      padding: 0 5px;
     }
 
     button {
@@ -35,27 +37,16 @@
           text-decoration: underline;
         }
       }
-
-      &.delete {
-        font-size: 16px;
-        color: #562426;
-
-        &:hover {
-          color: #843c3f;
-        }
-      }
     }
 
     .preview {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 15px;
+      flex-grow: 1;
     }
 
     .pixel-grid {
-      //border: 1px solid #ccc;
-
       .row .pixel {
         width: 3px;
         height: 3px;

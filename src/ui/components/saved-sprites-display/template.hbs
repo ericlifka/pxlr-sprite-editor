@@ -7,13 +7,15 @@
 
         <div class="sprite-entry">
           <div class="controls">
-            <button class="open" onclick={{action openSprite sprite}}>
+            <button class="open"
+                    title="open sprite"
+                    onclick={{action openSprite sprite}}>
               {{sprite.name}}
             </button>
 
-            <button class="delete">
-              delete
-            </button>
+            <two-click-delete
+              @action={{action deleteSprite sprite}}
+            />
           </div>
 
           <div class="preview">
