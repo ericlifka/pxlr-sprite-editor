@@ -31,6 +31,16 @@ export default class Store {
     return sprite;
   }
 
+  deleteSprite(sprite: Sprite) {
+    let sprites = this.sprites.filter(_s => _s !== sprite);
+    this.sprites = [];
+    requestAnimationFrame(() => {
+      this.sprites = sprites;
+      this.saveSpriteList();
+      sprite.deleteData();
+    });
+  }
+
   toggleWhiteAsEmpty(sprite: Sprite) {
     sprite.toggleWhiteAsEmpty();
     sprite.save();
@@ -112,9 +122,5 @@ export default class Store {
 
   private saveSpriteList() {
     localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map((sprite: Sprite) => sprite.name));
-  }
-
-  deleteSprite(sprite: Sprite) {
-    console.log('delete', sprite.name);
   }
 }

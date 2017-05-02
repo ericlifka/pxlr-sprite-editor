@@ -63,6 +63,10 @@ export default class Sprite {
     }
   }
 
+  deleteData() {
+    delete localStorage[this.name];
+  }
+
   /**
    * WARNING - WARNING - WARNING:
    *  The following four functions (save, toJSON, load, initializeEmptySprite) are responsible for moving data between
