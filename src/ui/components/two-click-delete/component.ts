@@ -11,6 +11,10 @@ export default class TwoClickDelete extends Component {
 
     if (!this.showPrompt) {
       this.showPrompt = true;
+      setTimeout(() => {
+        this.showPrompt = false;
+      }, 3000);
+
     } else {
       this.showCheck = true;
       setTimeout(() => {
