@@ -5,6 +5,10 @@ export default class TwoClickDelete extends Component {
   @tracked showCheck: boolean = false;
 
   click() {
+    if (this.showCheck) {
+      return;
+    }
+
     if (!this.showPrompt) {
       this.showPrompt = true;
     } else {
