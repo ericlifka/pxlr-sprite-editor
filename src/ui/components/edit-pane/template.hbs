@@ -13,7 +13,7 @@
       <input
         type="checkbox"
         checked={{@sprite.whiteAsEmpty}}
-          onchange={{action onToggle}}
+        onchange={{action onToggle}}
       />
     </label>
 
@@ -72,9 +72,14 @@
     {{/each}}
 
     <div class="new-frame-buttons">
-      <button title="new frame" onclick={{action addFrame}}><i class="ion-ios-plus-outline"></i></button>
+      <button title="new frame" onclick={{action addFrame}}>
+        <i class="ion-ios-plus-outline"></i>
+      </button>
+
       {{#if copiedFrame}}
-        <button title="paste copied frame" onclick={{action pasteCopiedFrame}}><i class="ion-ios-plus"></i></button>
+        <button title="paste copied frame" onclick={{action pasteCopiedFrame}}>
+          <i class="ion-ios-plus"></i>
+        </button>
       {{/if}}
     </div>
   </div>

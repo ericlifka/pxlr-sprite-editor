@@ -43,8 +43,15 @@
       margin-right: 15px;
     }
 
-    .white-empty-picker,
     .size-picker {
+      font-size: 16px;
+      background-color: $teal-extra-light;
+      border: 1px solid $teal-light;
+    }
+
+    .size-picker,
+    .white-empty-picker,
+    .white-empty-picker input {
       cursor: pointer;
     }
   }
