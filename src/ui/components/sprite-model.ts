@@ -14,7 +14,7 @@ export default class Sprite {
   @tracked firstFrame: Frame;
 
   @tracked spriteBlob: string;
-  @tracked canSave: boolean;
+  @tracked canSave: boolean = true;
 
   static CURRENT_SCHEMA_VERSION: number = 2;
 
@@ -80,8 +80,12 @@ export default class Sprite {
   save(): void {
     if (this.canSave) {
       localStorage[this.name] = JSON.stringify(this.toJSON());
+      console.log('save succeeded');
     } else {
-      requestAnimationFrame(() => this.save());
+      console.log('save deferred');
+      requestAnimationFrame(() => {
+        this.save();
+      });
     }
   }
 

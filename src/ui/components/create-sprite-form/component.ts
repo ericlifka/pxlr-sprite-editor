@@ -20,7 +20,10 @@ export default class CreateSpriteForm extends Component {
     this[dimension] = parseInt(event.target.value, 10);
   }
 
-  submitForm() {
+  submitForm(event) {
     this.args.createSprite(this.width, this.height, this.name);
+
+    event.preventDefault();
+    return false;
   }
 }

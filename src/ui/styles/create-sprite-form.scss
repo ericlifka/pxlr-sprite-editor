@@ -1,6 +1,78 @@
 .create-sprite-form {
-  input {
-    width: 40px;
-    margin-right: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  color: $font-color;
+  font-size: 18px;
+  font-family: "Courier New";
+
+  .title {
+    border-bottom: 3px solid $border-color;
+    display: inline;
+    margin-bottom: 10px;
+    font-weight: 800;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 30px;
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+
+    .row {
+      display: flex;
+      flex-direction: row;
+
+      .input {
+        display: flex;
+        flex-grow: 1;
+        position: relative;
+        margin-right: 25px;
+        margin-bottom: 15px;
+
+        label {
+          position: absolute;
+          right: 5px;
+          top: 5px;
+          font-size: 16px;
+        }
+      }
+
+      input {
+        font-size: 18px;
+        color: $font-color;
+        flex-grow: 1;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid $border-color;
+
+        &:focus {
+          border-bottom-color: $font-color;
+        }
+      }
+    }
+  }
+
+  .submit {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    button {
+      font-size: 60px;
+      color: $border-color;
+      border: none;
+      background-color: rgba(0, 0, 0, 0);
+      cursor: pointer;
+
+      &:hover {
+        color: $font-color;
+      }
+    }
   }
 }

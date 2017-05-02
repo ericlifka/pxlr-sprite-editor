@@ -1,18 +1,32 @@
 <div class="create-sprite-form">
-  <div>
-    <label for="name">Sprite Name:</label>
-    <input id="name" class="focus-on-load" oninput={{action updateName}} />
-  </div>
+  <div class="title">Create a new Sprite</div>
 
-  <div>
-    <label for="width">Width:</label>
-    <input id="width" defaultValue={{width}} oninput={{action updateDimensions "width"}} />
+  <form onsubmit={{action submitForm}}>
+    <div class="inputs">
+      <div class="row">
+        <div class="input">
+          <label for="name">Name your sprite</label>
+          <input id="name" class="focus-on-load" oninput={{action updateName}}/>
+        </div>
+      </div>
 
-    <label for="height">Height:</label>
-    <input id="height" defaultValue={{height}} oninput={{action updateDimensions "height"}} />
-  </div>
+      <div class="row">
+        <div class="input">
+          <label for="width">Width</label>
+          <input id="width" defaultValue={{width}} oninput={{action updateDimensions "width"}} />
+        </div>
 
-  <div>
-    <button onclick={{action submitForm}}>Create Sprite</button>
-  </div>
+        <div class="input">
+          <label for="height">Height</label>
+          <input id="height" defaultValue={{height}} oninput={{action updateDimensions "height"}} />
+        </div>
+      </div>
+    </div>
+
+    <div class="submit">
+      <button onclick={{action submitForm}}>
+        <i class="ion-ios-plus-outline"></i>
+      </button>
+    </div>
+  </form>
 </div>
