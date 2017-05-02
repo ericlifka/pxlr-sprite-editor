@@ -111,18 +111,29 @@
           }
         }
 
-        .spacer {
+        .two-click-delete {
           flex-grow: 1;
+          align-items: center;
+          min-width: 30px;
+          min-height: inherit;
           border-left: 1px solid $teal-medium;
-          margin-right: -1px;
+
+          button {
+            flex-grow: 1;
+            width: 100%;
+
+            i {
+              font-size: 18px;
+              min-width: 17px;
+            }
+          }
         }
       }
     }
   }
 
   .sprite-blob {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 10px 10px 0 10px;
     padding-right: 50px;
     display: flex;
 
@@ -148,7 +159,7 @@
       font-size: 10px;
       color: $teal-dark;
       word-wrap: break-word;
-      border-color: $teal-medium;
+      border-color: $teal-light;
 
       width: 100%;
       height: 150px;
