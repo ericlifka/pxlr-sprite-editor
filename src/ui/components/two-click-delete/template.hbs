@@ -1,7 +1,9 @@
 <div class="two-click-delete" title="delete?">
   <button onclick={{action click}}>
-    {{#if showPrompt}}
-      <span class="prompt">delete?</span>
+    {{#if showCheck}}
+      <i class="ion-checkmark-circled"></i>
+    {{else if showPrompt}}
+      <i class="ion-ios-close-outline"></i>
     {{else}}
       <i class="ion-ios-trash-outline"></i>
     {{/if}}
