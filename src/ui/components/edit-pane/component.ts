@@ -33,6 +33,8 @@ export default class EditPane extends Component {
   }
 
   closeSprite() {
+    this.breakAnimation = true;
+
     this.args.closeSprite();
   }
 
