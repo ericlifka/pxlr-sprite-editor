@@ -14,6 +14,7 @@ export default class Sprite {
   @tracked firstFrame: Frame;
 
   @tracked spriteBlob: string;
+  @tracked colorPalette: string[];
   @tracked canSave: boolean = true;
 
   static CURRENT_SCHEMA_VERSION: number = 2;
@@ -46,6 +47,7 @@ export default class Sprite {
     requestAnimationFrame(() => {
       this.frames = newFrames;
       this.regenerateBlob();
+      this.generateColorPalette();
       this.canSave = true;
     });
   }
@@ -58,9 +60,26 @@ export default class Sprite {
       requestAnimationFrame(() => {
         this.frames = newFrames;
         this.regenerateBlob();
+        this.generateColorPalette();
         this.canSave = true;
       });
     }
+  }
+
+  generateColorPalette() {
+    this.colorPalette = [];
+    requestAnimationFrame(() => {
+      let colorPalette = new Set();
+
+      this.frames.forEach((frame: Frame) => frame.forEach((row: Row) => row.map((pixel: Pixel) =>
+        colorPalette.add(pixel.color))));
+
+      this.colorPalette = [...colorPalette];
+    });
+  }
+
+  addColorToPalette(color: string) {
+    this.colorPalette = Array.from(new Set([...this.colorPalette, color]));
   }
 
   deleteData() {
@@ -121,6 +140,7 @@ export default class Sprite {
     sprite.firstFrame = sprite.frames[0];
 
     sprite.regenerateBlob();
+    sprite.generateColorPalette();
 
     return sprite;
   }
@@ -136,6 +156,7 @@ export default class Sprite {
     sprite.firstFrame = sprite.frames[0];
 
     sprite.regenerateBlob();
+    sprite.generateColorPalette();
 
     return sprite;
   }

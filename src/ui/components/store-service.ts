@@ -48,6 +48,7 @@ export default class Store {
 
   changePixelColor(sprite: Sprite, pixel: Pixel, activeColor: string) {
     pixel.color = activeColor;
+    sprite.addColorToPalette(activeColor);
     sprite.regenerateBlob();
     sprite.save();
   }

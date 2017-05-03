@@ -42,6 +42,14 @@
     </button>
   </div>
 
+  <div class="side-panel">
+    <div class="color-palette">
+      {{#each @sprite.colorPalette key="@index" as |colorCode|}}
+        <button class="color-code">{{colorCode}}</button>
+      {{/each}}
+    </div>
+  </div>
+
   <div class="animation-frames {{displaySize}}">
     {{#each @sprite.frames key="id" as |frame|}}
       <div class="frame">
