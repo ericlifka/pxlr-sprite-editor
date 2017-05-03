@@ -45,7 +45,9 @@
   <div class="side-panel">
     <div class="color-palette">
       {{#each @sprite.colorPalette key="@index" as |colorCode|}}
-        <button class="color-code">{{colorCode}}</button>
+        <button class="color-code"
+                style="background-color: {{colorCode}}">
+        </button>
       {{/each}}
     </div>
   </div>
