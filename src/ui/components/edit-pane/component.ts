@@ -28,6 +28,17 @@ export default class EditPane extends Component {
     this.activeColor = "#" + event.target.value;
   }
 
+  changeActiveColor(colorCode) {
+    this.activeColor = colorCode;
+
+    let root: HTMLElement = this.element as HTMLElement;
+    let inputEle: HTMLInputElement =
+      root.getElementsByClassName('jscolor')[0] as HTMLInputElement;
+
+    inputEle.value = colorCode.split('#')[1];
+    inputEle.dispatchEvent(new Event('blur'));
+  }
+
   selectPixel(pixel: Pixel) {
     this.store.changePixelColor(this.args.sprite, pixel, this.activeColor);
   }

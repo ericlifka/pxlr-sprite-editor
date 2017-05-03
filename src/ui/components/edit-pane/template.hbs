@@ -46,8 +46,9 @@
     <div class="color-palette">
       {{#each @sprite.colorPalette key="@index" as |colorCode|}}
         <button class="color-code"
-                style="background-color: {{colorCode}}">
-        </button>
+                style="background-color: {{colorCode}}"
+                onclick={{action changeActiveColor colorCode}}
+        ></button>
       {{/each}}
     </div>
   </div>
