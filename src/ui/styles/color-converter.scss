@@ -1,0 +1,28 @@
+.color-converter {
+  display: flex;
+  flex-direction: column;
+
+  .r-g-b {
+    display: flex;
+    flex-direction: row;
+
+    input {
+      text-align: center;
+      color: $teal-medium;
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 14px;
+      width: 25px;
+      margin-right: 2px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid $teal-medium;
+      &:focus {
+        border-bottom-color: $teal-dark;
+      }
+    }
+  }
+
+  .hex {
+
+  }
+}

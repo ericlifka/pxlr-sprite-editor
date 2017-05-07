@@ -11,7 +11,7 @@ export default class EditPane extends Component {
   @tracked displaySize: string = "medium";
   @tracked animationClass: string = "";
   @tracked copySuccess: boolean = false;
-  @tracked toolkitState: string = "expanded";
+  @tracked toolkitState: string = "collapsed";
 
   breakAnimation: boolean = false;
 

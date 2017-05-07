@@ -1,3 +1,19 @@
 <div class="color-converter">
-
+  <div class="r-g-b">
+    <div>
+      <label for="red">r</label>
+      <input id="red" defaultValue={{red}} oninput={{action updateRGB "red"}} />
+    </div>
+    <div>
+      <label for="green">g</label>
+      <input id="green" defaultValue={{green}} oninput={{action updateRGB "green"}} />
+    </div>
+    <div>
+      <label for="blue">b</label>
+      <input id="blue" defaultValue={{blue}} oninput={{action updateRGB "blue"}} />
+    </div>
+  </div>
+  <div class="hex">
+    {{hex}}
+  </div>
 </div>

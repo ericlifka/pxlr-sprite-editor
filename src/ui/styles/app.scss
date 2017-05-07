@@ -5,6 +5,7 @@ $teal-dark: #456361;
 
 $font-family: "Courier New", monospace;
 
+@import "color-converter";
 @import "create-sprite-form";
 @import "edit-pane";
 @import "pixel-grid";
