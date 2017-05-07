@@ -1,0 +1,21 @@
+<div class="import-sprite-form">
+  <div class="title">Import an external project</div>
+
+  <form onsubmit={{action submitForm}}>
+
+    <div class="inputs">
+      <label for="import-blob-textarea">Sprite JSON blob</label>
+      <textarea
+        id="import-blob-textarea"
+        defaultValue={{width}}
+        oninput={{action updateBlobInput}}
+      />
+    </div>
+
+    <div class="submit">
+      <button onclick={{action submitForm}}>
+        <i class="ion-ios-plus-outline"></i>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+.import-sprite-form {
+  margin: 20px 20px 80px 20px;
+  display: flex;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 30px;
+  }
+
+  .inputs {
+    display: flex;
+    width: 550px;
+    margin-top: 5px;
+    position: relative;
+    margin-right: 25px;
+
+    label {
+      position: absolute;
+      right: 10px;
+      bottom: 5px;
+      font-size: 14px;
+    }
+
+    textarea {
+      flex-grow: 1;
+      color: $teal-medium;
+      font-size: 14px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid $teal-medium;
+      border-right: 2px solid $teal-medium;
+      &:focus {
+        border-bottom: 2px solid $teal-dark;
+        border-right: 2px solid $teal-dark;
+      }
+    }
+  }
+
+  .submit {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    button {
+      font-size: 60px;
+      color: $teal-medium;
+      border: none;
+      background-color: rgba(0, 0, 0, 0);
+      cursor: pointer;
+
+      &:hover {
+        color: $teal-dark;
+      }
+    }
+  }
+}

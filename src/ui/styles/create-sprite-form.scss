@@ -1,6 +1,5 @@
 .create-sprite-form {
-  margin: 20px;
-  margin-bottom: 80px;
+  margin: 20px 20px 80px 20px;
   display: flex;
   flex-direction: column;
 
@@ -14,6 +13,7 @@
   .inputs {
     display: flex;
     flex-direction: column;
+    width: 550px;
 
     .row {
       display: flex;
