@@ -1,18 +1,21 @@
 .color-converter {
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
 
   .r-g-b {
     display: flex;
     flex-direction: row;
+    margin-bottom: 5px;
 
     input {
-      text-align: center;
+      text-align: right;
       color: $teal-medium;
       background-color: rgba(0, 0, 0, 0);
       font-size: 14px;
-      width: 25px;
-      margin-right: 2px;
+      width: 45px;
+      margin: 0 15px 0 -35px;
+      padding-left: 5px;
       outline: none;
       border: none;
       border-bottom: 2px solid $teal-medium;
@@ -23,6 +26,10 @@
   }
 
   .hex {
-
+    text-align: center;
+    i {
+      font-size: 12px;
+      margin-right: -8px
+    }
   }
 }
