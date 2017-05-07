@@ -11,6 +11,7 @@ export default class EditPane extends Component {
   @tracked displaySize: string = "medium";
   @tracked animationClass: string = "";
   @tracked copySuccess: boolean = false;
+  @tracked toolkitState: string = "expanded";
 
   breakAnimation: boolean = false;
 
@@ -149,5 +150,12 @@ export default class EditPane extends Component {
         this.copySuccess = false;
       }, 500);
     }
+  }
+
+  collapseToolkit() {
+    this.toolkitState = "collapsed";
+  }
+  expandToolkit() {
+    this.toolkitState = "expanded";
   }
 }

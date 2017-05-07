@@ -110,4 +110,17 @@
       {{/if}}
     </div>
   </div>
+
+  <div class="toolkit {{toolkitState}}">
+    <div class="expanded">
+      <button class="collapse-button" onclick={{action collapseToolkit}}>
+        <i class="ion-arrow-shrink"></i>
+      </button>
+    </div>
+    <div class="collapsed">
+      <butotn class="expand-button" onclick={{action expandToolkit}}>
+        <i class="ion-arrow-expand"></i>
+      </butotn>
+    </div>
+  </div>
 </div>

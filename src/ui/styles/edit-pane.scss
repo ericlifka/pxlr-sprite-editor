@@ -246,4 +246,41 @@
       display: none;
     }
   }
+
+  .toolkit {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    border: 1px solid $teal-light;
+    border-right: none;
+    border-bottom: none;
+    background-color: $teal-extra-light;
+    padding: 5px 10px;
+
+    &.expanded {
+      .collapsed {
+        display: none;
+      }
+    }
+    &.collapsed {
+      .expanded {
+        display: none;
+      }
+    }
+
+    .collapse-button,
+    .expand-button{
+      font-size: 36px;
+      color: $teal-medium;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0);
+      &:hover {
+        color: $teal-dark;
+      }
+    }
+  }
 }
