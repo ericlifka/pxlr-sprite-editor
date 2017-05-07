@@ -1,3 +1,30 @@
+.color-converter {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px; }
+  .color-converter .r-g-b {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px; }
+    .color-converter .r-g-b input {
+      text-align: right;
+      color: #719997;
+      background-color: transparent;
+      font-size: 14px;
+      width: 45px;
+      margin: 0 15px 0 -35px;
+      padding-left: 5px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid #719997; }
+      .color-converter .r-g-b input:focus {
+        border-bottom-color: #456361; }
+  .color-converter .hex {
+    text-align: center; }
+    .color-converter .hex i {
+      font-size: 12px;
+      margin-right: -8px; }
+
 .create-sprite-form {
   margin: 20px;
   margin-bottom: 80px;
@@ -96,10 +123,11 @@
     top: 51px;
     left: 0;
     bottom: 0;
-    height: 100%;
+    height: calc(100% - 51px);
     width: 60px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: #f8feff;
     border-right: 1px solid #719997; }
     .edit-pane .side-panel .color-palette {
@@ -128,6 +156,32 @@
           border-top: 18px solid transparent;
           border-bottom: 18px solid transparent;
           border-left: 15px solid #719997; }
+    .edit-pane .side-panel .sprite-blob {
+      display: flex; }
+      .edit-pane .side-panel .sprite-blob .copy-button {
+        font-size: 36px;
+        border: none;
+        background-color: #f8feff;
+        cursor: pointer;
+        color: #719997;
+        width: 100%;
+        height: 100%;
+        z-index: 1; }
+        .edit-pane .side-panel .sprite-blob .copy-button:hover {
+          color: #456361; }
+        .edit-pane .side-panel .sprite-blob .copy-button .success {
+          color: #3cbd40; }
+      .edit-pane .side-panel .sprite-blob textarea {
+        font-family: monospace;
+        font-size: 10px;
+        color: #456361;
+        word-wrap: break-word;
+        border-color: #99b6b1;
+        z-index: 0;
+        height: 100%;
+        width: calc(100% - 6px);
+        position: absolute;
+        left: 0; }
   .edit-pane .animation-frames {
     display: flex;
     flex-direction: row;
@@ -187,29 +241,6 @@
             .edit-pane .animation-frames .frame .frame-control-buttons .two-click-delete button i {
               font-size: 18px;
               min-width: 17px; }
-  .edit-pane .sprite-blob {
-    margin: 10px 10px 0 10px;
-    padding-right: 50px;
-    display: flex; }
-    .edit-pane .sprite-blob .copy-button {
-      font-size: 36px;
-      border: none;
-      background-color: white;
-      cursor: pointer;
-      color: #719997;
-      width: 50px; }
-      .edit-pane .sprite-blob .copy-button:hover {
-        color: #456361; }
-      .edit-pane .sprite-blob .copy-button .success {
-        color: #3cbd40; }
-    .edit-pane .sprite-blob textarea {
-      font-family: monospace;
-      font-size: 10px;
-      color: #456361;
-      word-wrap: break-word;
-      border-color: #99b6b1;
-      width: 100%;
-      height: 150px; }
   .edit-pane.show-animation .frame.hidden {
     display: none; }
   .edit-pane.show-animation .frame .frame-control-buttons {
@@ -218,6 +249,39 @@
     display: none; }
   .edit-pane.show-animation .new-frame-buttons {
     display: none; }
+  .edit-pane .toolkit {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #99b6b1;
+    border-right: none;
+    border-bottom: none;
+    background-color: #f8feff; }
+    .edit-pane .toolkit.expanded .collapsed,
+    .edit-pane .toolkit.collapsed .expanded {
+      display: none; }
+    .edit-pane .toolkit .expanded {
+      display: flex;
+      flex-direction: row; }
+      .edit-pane .toolkit .expanded .content {
+        padding: 5px 10px; }
+    .edit-pane .toolkit .collapsed {
+      display: flex; }
+    .edit-pane .toolkit .collapse-button,
+    .edit-pane .toolkit .expand-button {
+      font-size: 24px;
+      cursor: pointer;
+      border: none;
+      padding: 10px 5px;
+      margin: 0;
+      color: #719997;
+      background-color: transparent; }
+      .edit-pane .toolkit .collapse-button:hover,
+      .edit-pane .toolkit .expand-button:hover {
+        color: #456361;
+        background-color: #99b6b1; }
+    .edit-pane .toolkit .collapse-button {
+      border-right: 1px solid #99b6b1; }
 
 .pixel-grid {
   display: inline-block; }
