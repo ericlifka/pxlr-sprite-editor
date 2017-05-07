@@ -114,14 +114,16 @@
   <div class="toolkit {{toolkitState}}">
     <div class="expanded">
       <button class="collapse-button" onclick={{action collapseToolkit}}>
-        <i class="ion-arrow-shrink"></i>
+        <i class="ion-chevron-right"></i>
       </button>
 
-      <color-converter />
+      <div class="content">
+        <color-converter />
+      </div>
     </div>
     <div class="collapsed">
       <butotn class="expand-button" onclick={{action expandToolkit}}>
-        <i class="ion-arrow-expand"></i>
+        <i class="ion-chevron-left"></i>
       </butotn>
     </div>
   </div>

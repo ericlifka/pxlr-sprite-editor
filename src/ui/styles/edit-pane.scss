@@ -195,7 +195,7 @@
           padding: 0;
           border: 0px solid;
           border-left: 1px solid $teal-medium;
-          background-color: rgba(0,0,0,0);
+          background-color: rgba(0, 0, 0, 0);
           width: 30px;
           height: 20px;
           cursor: pointer;
@@ -251,36 +251,46 @@
     position: fixed;
     right: 0;
     bottom: 0;
-    display: flex;
     border: 1px solid $teal-light;
     border-right: none;
     border-bottom: none;
     background-color: $teal-extra-light;
-    padding: 5px 10px;
 
-    &.expanded {
-      .collapsed {
-        display: none;
+    &.expanded .collapsed,
+    &.collapsed .expanded {
+      display: none;
+    }
+
+    .expanded {
+      display: flex;
+      flex-direction: row;
+
+      .content {
+        padding: 5px 10px;
       }
     }
-    &.collapsed {
-      .expanded {
-        display: none;
-      }
+
+    .collapsed {
+      display: flex;
     }
 
     .collapse-button,
-    .expand-button{
+    .expand-button {
       font-size: 24px;
-      color: $teal-medium;
       cursor: pointer;
       border: none;
-      padding: 0;
+      padding: 10px 5px;
       margin: 0;
+      color: $teal-medium;
       background-color: rgba(0, 0, 0, 0);
       &:hover {
         color: $teal-dark;
+        background-color: $teal-light;
       }
+    }
+
+    .collapse-button {
+      border-right: 1px solid $teal-light;
     }
   }
 }
