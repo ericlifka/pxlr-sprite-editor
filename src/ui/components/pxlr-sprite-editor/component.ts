@@ -10,6 +10,10 @@ export default class PxlrSpriteEditor extends Component {
     this.activeSprite = this.store.createSprite(width, height, name);
   }
 
+  importSprite(blob: string) {
+    this.activeSprite = this.store.createSpriteFromBlob(blob);
+  }
+
   openSprite(sprite: Sprite) {
     this.activeSprite = sprite;
   }

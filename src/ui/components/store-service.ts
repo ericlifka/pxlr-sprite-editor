@@ -31,6 +31,16 @@ export default class Store {
     return sprite;
   }
 
+  createSpriteFromBlob(blob: string): Sprite {
+    let sprite: Sprite = Sprite.loadFromBlob(blob);
+
+    this.sprites.push(sprite);
+    sprite.save();
+    this.saveSpriteList();
+
+    return sprite;
+  }
+
   deleteSprite(sprite: Sprite) {
     let sprites = this.sprites.filter(_s => _s !== sprite);
     this.sprites = [];

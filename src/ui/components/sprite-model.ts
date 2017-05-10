@@ -127,8 +127,12 @@ export default class Sprite {
   }
 
   static load(name: string): Sprite {
+    return Sprite.loadFromBlob(localStorage[name]);
+  }
+
+  static loadFromBlob(blob: string): Sprite {
     let sprite = new Sprite();
-    let descriptor = JSON.parse(localStorage[name]);
+    let descriptor = JSON.parse(blob);
 
     descriptor = runMigrations(descriptor, name);
 
