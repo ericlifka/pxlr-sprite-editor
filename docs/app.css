@@ -26,8 +26,7 @@
       margin-right: -8px; }
 
 .create-sprite-form {
-  margin: 20px;
-  margin-bottom: 80px;
+  margin: 20px 20px 80px 20px;
   display: flex;
   flex-direction: column; }
   .create-sprite-form form {
@@ -37,7 +36,8 @@
     padding-left: 30px; }
   .create-sprite-form .inputs {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    width: 550px; }
     .create-sprite-form .inputs .row {
       display: flex;
       flex-direction: row; }
@@ -282,6 +282,50 @@
         background-color: #99b6b1; }
     .edit-pane .toolkit .collapse-button {
       border-right: 1px solid #99b6b1; }
+
+.import-sprite-form {
+  margin: 20px 20px 80px 20px;
+  display: flex;
+  flex-direction: column; }
+  .import-sprite-form form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 30px; }
+  .import-sprite-form .inputs {
+    display: flex;
+    width: 550px;
+    margin-top: 5px;
+    position: relative;
+    margin-right: 25px; }
+    .import-sprite-form .inputs label {
+      position: absolute;
+      right: 10px;
+      bottom: 5px;
+      font-size: 14px; }
+    .import-sprite-form .inputs textarea {
+      flex-grow: 1;
+      color: #719997;
+      font-size: 14px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid #719997;
+      border-right: 2px solid #719997; }
+      .import-sprite-form .inputs textarea:focus {
+        border-bottom: 2px solid #456361;
+        border-right: 2px solid #456361; }
+  .import-sprite-form .submit {
+    display: flex;
+    justify-content: center;
+    align-content: center; }
+    .import-sprite-form .submit button {
+      font-size: 60px;
+      color: #719997;
+      border: none;
+      background-color: transparent;
+      cursor: pointer; }
+      .import-sprite-form .submit button:hover {
+        color: #456361; }
 
 .pixel-grid {
   display: inline-block; }
