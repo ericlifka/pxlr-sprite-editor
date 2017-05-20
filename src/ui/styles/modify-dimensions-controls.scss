@@ -1,0 +1,38 @@
+.modify-dimensions-controls {
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .fake-box {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $teal-light;
+    background-color: white;
+    margin: 5px 10px;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    color: $teal-medium;
+
+    button {
+      border: none;
+      background-color: rgba(0, 0, 0, 0);
+      cursor: pointer;
+      font-size: 16px;
+      margin: 0;
+      padding: 1px;
+      color: $teal-medium;
+
+      &:hover {
+        color: $teal-dark;
+      }
+    }
+  }
+}

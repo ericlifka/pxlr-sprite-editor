@@ -264,14 +264,15 @@
     .expanded {
       display: flex;
       flex-direction: row;
-
-      .content {
-        padding: 5px 10px;
-      }
     }
 
     .collapsed {
       display: flex;
+    }
+
+    .content > div {
+      padding: 5px 10px;
+      border-bottom: 1px solid $teal-light;
     }
 
     .collapse-button,
