@@ -158,4 +158,8 @@ export default class EditPane extends Component {
   expandToolkit() {
     this.toolkitState = "expanded";
   }
+
+  modifyDimension(action, side) {
+    console.log(action, side);
+  }
 }
