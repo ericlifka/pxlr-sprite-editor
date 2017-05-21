@@ -111,7 +111,7 @@ export default class Store {
 
     }
 
-    sprite.frames = [ ...front, right, left, ...back ];
+    sprite.frames = [...front, right, left, ...back];
     sprite.regenerateBlob();
     sprite.save();
   }
@@ -133,5 +133,18 @@ export default class Store {
 
   private saveSpriteList() {
     localStorage['savedSpritesList'] = JSON.stringify(this.sprites.map((sprite: Sprite) => sprite.name));
+  }
+
+  addRow(sprite: Sprite, side: string) {
+    if (side === "left") sprite.addColumn(true);
+    if (side === "right") sprite.addColumn();
+    if (side === "top") sprite.addRow(true);
+    if (side === "bottom") sprite.addRow();
+
+    sprite.save();
+  }
+
+  subtractRow(sprite: Sprite, side: string) {
+
   }
 }

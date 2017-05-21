@@ -120,7 +120,7 @@ export default class EditPane extends Component {
         updateClasses();
       }
 
-      if (this.breakAnimation){
+      if (this.breakAnimation) {
         this.animationClass = "";
         for (let i = 0; i < boundary; i++) {
           frames[i].classList.remove('hidden');
@@ -155,11 +155,13 @@ export default class EditPane extends Component {
   collapseToolkit() {
     this.toolkitState = "collapsed";
   }
+
   expandToolkit() {
     this.toolkitState = "expanded";
   }
 
   modifyDimension(action, side) {
-    console.log(action, side);
+    if (action === "add") this.store.addRow(this.args.sprite, side);
+    if (action === "subtract") this.store.subtractRow(this.args.sprite, side);
   }
 }

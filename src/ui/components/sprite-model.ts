@@ -66,6 +66,50 @@ export default class Sprite {
     }
   }
 
+  addColumn(front: boolean = false) {
+    this.canSave = false;
+
+    let addFn = front ? 'unshift' : 'push';
+    let frames = this.frames;
+    this.frames = [];
+    requestAnimationFrame(() => {
+
+      frames.forEach((frame: Frame) => {
+        frame.forEach((row: Row) => {
+          row[ addFn ](new Pixel());
+        });
+      });
+
+      this.frames = frames;
+      this.width += 1;
+      this.regenerateBlob();
+      this.generateColorPalette();
+
+      this.canSave = true;
+    });
+  }
+
+  addRow(front: boolean = false) {
+    this.canSave = false;
+
+    let addFn = front ? 'unshift' : 'push';
+    let frames = this.frames;
+    this.frames = [];
+    requestAnimationFrame(() => {
+
+      frames.forEach((frame: Frame) => {
+        frame[ addFn ](createBlankRow(this.width));
+      });
+
+      this.frames = frames;
+      this.height += 1;
+      this.regenerateBlob();
+      this.generateColorPalette();
+
+      this.canSave = true;
+    });
+  }
+
   generateColorPalette() {
     this.colorPalette = [];
     requestAnimationFrame(() => {
@@ -181,13 +225,17 @@ function createBlankFrameList(width: number, height: number): Frame[] {
 function createBlankFrame(width: number, height: number): Frame {
   let frame: Frame = [];
   for (let h = 0; h < height; h++) {
-    let row: Row = [];
-    for (let w = 0; w < width; w++) {
-      row.push(new Pixel());
-    }
-    frame.push(row);
+    frame.push(createBlankRow(width));
   }
   return frame;
+}
+
+function createBlankRow(width: number): Row {
+  let row: Row = [];
+  for (let w = 0; w < width; w++) {
+    row.push(new Pixel());
+  }
+  return row;
 }
 
 function runMigrations(json: any, name: string) {
