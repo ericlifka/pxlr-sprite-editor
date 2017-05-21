@@ -69,14 +69,14 @@ export default class Sprite {
   addColumn(front: boolean = false) {
     this.canSave = false;
 
-    let addFn = front ? 'unshift' : 'push';
+    let fn = front ? 'unshift' : 'push';
     let frames = this.frames;
     this.frames = [];
     requestAnimationFrame(() => {
 
       frames.forEach((frame: Frame) => {
         frame.forEach((row: Row) => {
-          row[ addFn ](new Pixel());
+          row[ fn ](new Pixel());
         });
       });
 
@@ -92,17 +92,61 @@ export default class Sprite {
   addRow(front: boolean = false) {
     this.canSave = false;
 
-    let addFn = front ? 'unshift' : 'push';
+    let fn = front ? 'unshift' : 'push';
     let frames = this.frames;
     this.frames = [];
     requestAnimationFrame(() => {
 
       frames.forEach((frame: Frame) => {
-        frame[ addFn ](createBlankRow(this.width));
+        frame[ fn ](createBlankRow(this.width));
       });
 
       this.frames = frames;
       this.height += 1;
+      this.regenerateBlob();
+      this.generateColorPalette();
+
+      this.canSave = true;
+    });
+  }
+
+  subtractColumn(front: boolean = false) {
+    this.canSave = false;
+
+    let fn = front ? 'shift' : 'pop';
+    let frames = this.frames;
+    this.frames = [];
+    requestAnimationFrame(() => {
+
+      frames.forEach((frame: Frame) => {
+        frame.forEach((row: Row) => {
+          row[ fn ]();
+        });
+      });
+
+      this.frames = frames;
+      this.width -= 1;
+      this.regenerateBlob();
+      this.generateColorPalette();
+
+      this.canSave = true;
+    });
+  }
+
+  subtractRow(front: boolean = false) {
+    this.canSave = false;
+
+    let fn = front ? 'shift' : 'pop';
+    let frames = this.frames;
+    this.frames = [];
+    requestAnimationFrame(() => {
+
+      frames.forEach((frame: Frame) => {
+        frame[ fn ]();
+      });
+
+      this.frames = frames;
+      this.height -= 1;
       this.regenerateBlob();
       this.generateColorPalette();
 

@@ -145,6 +145,11 @@ export default class Store {
   }
 
   subtractRow(sprite: Sprite, side: string) {
+    if (side === "left") sprite.subtractColumn(true);
+    if (side === "right") sprite.subtractColumn();
+    if (side === "top") sprite.subtractRow(true);
+    if (side === "bottom") sprite.subtractRow();
 
+    sprite.save();
   }
 }
