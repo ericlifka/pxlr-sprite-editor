@@ -263,10 +263,11 @@
     .edit-pane .toolkit .expanded {
       display: flex;
       flex-direction: row; }
-      .edit-pane .toolkit .expanded .content {
-        padding: 5px 10px; }
     .edit-pane .toolkit .collapsed {
       display: flex; }
+    .edit-pane .toolkit .content > div {
+      padding: 5px 10px;
+      border-bottom: 1px solid #99b6b1; }
     .edit-pane .toolkit .collapse-button,
     .edit-pane .toolkit .expand-button {
       font-size: 24px;
@@ -326,6 +327,36 @@
       cursor: pointer; }
       .import-sprite-form .submit button:hover {
         color: #456361; }
+
+.modify-dimensions-controls .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+.modify-dimensions-controls .fake-box {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #99b6b1;
+  background-color: white;
+  margin: 5px 10px; }
+
+.modify-dimensions-controls .button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: #719997; }
+  .modify-dimensions-controls .button-group button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0;
+    padding: 1px;
+    color: #719997; }
+    .modify-dimensions-controls .button-group button:hover {
+      color: #456361; }
 
 .pixel-grid {
   display: inline-block; }
